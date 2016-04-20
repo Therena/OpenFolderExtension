@@ -1,19 +1,12 @@
-﻿//------------------------------------------------------------------------------
-// <copyright file="OpenFolder.cs" company="Company">
-//     Copyright (c) Company.  All rights reserved.
-// </copyright>
-//------------------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.ComponentModel.Design;
-using System.Globalization;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using EnvDTE80;
 using EnvDTE;
 using System.IO;
 
-namespace OpenFolderForSourceFiles
+namespace OpenFolderExtension
 {
     /// <summary>
     /// Command handler

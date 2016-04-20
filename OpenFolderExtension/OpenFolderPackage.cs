@@ -1,22 +1,9 @@
-﻿//------------------------------------------------------------------------------
-// <copyright file="OpenFolderPackage.cs" company="Company">
-//     Copyright (c) Company.  All rights reserved.
-// </copyright>
-//------------------------------------------------------------------------------
-
-using System;
-using System.ComponentModel.Design;
-using System.Diagnostics;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Runtime.InteropServices;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.Win32;
 
-namespace OpenFolderForSourceFiles
+namespace OpenFolderExtension
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
