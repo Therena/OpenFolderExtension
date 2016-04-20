@@ -1,11 +1,6 @@
 # OpenFolderExtension
 
-<!-- Replace this badge with your own-->
-[![Build status](https://ci.appveyor.com/api/projects/status/hv6uyc059rqbc6fj?svg=true)](https://ci.appveyor.com/project/madskristensen/extensibilitytools)
-
-<!-- Update the VS Gallery link after you upload the VSIX-->
-Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/[GuidFromGallery])
-or get the [CI build](http://vsixgallery.com/extension/9a6a346e-9753-4703-8208-425eb1181d4d/).
+Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/2fad2b0f-c4eb-4ba1-91a2-11def441b4a1)
 
 ---------------------------------------
 
