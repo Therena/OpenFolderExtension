@@ -95,48 +95,63 @@ namespace OpenFolderExtension
             Instance = new OpenFolder(package);
         }
 
-        private void FolderOfProjectItem(DTE2 dte)
+        private bool FolderOfProjectItem(SelectedItem selectedItem)
         {
-            foreach (SelectedItem selectedItem in dte.SelectedItems)
+            if (selectedItem.ProjectItem == null)
             {
-                if (selectedItem.ProjectItem == null)
-                {
-                    return;
-                }
-
-                var projectItem = selectedItem.ProjectItem;
-                var fullPathProperty = projectItem.Properties.Item("FullPath");
-
-                if (fullPathProperty == null)
-                {
-                    return;
-                }
-
-                var fullPath = new FileInfo(fullPathProperty.Value.ToString());
-                System.Diagnostics.Process.Start("explorer.exe", "\"" + fullPath.Directory.FullName + "\"");
+                return false;
             }
+
+            var projectItem = selectedItem.ProjectItem;
+            var fullPathProperty = projectItem.Properties.Item("FullPath");
+
+            if (fullPathProperty == null)
+            {
+                return false;
+            }
+
+            var fullPath = new FileInfo(fullPathProperty.Value.ToString());
+            System.Diagnostics.Process.Start("explorer.exe", "\"" + fullPath.Directory.FullName + "\"");
+            return true;
         }
 
-        private void FolderOfProject(DTE2 dte)
+        private bool HasProperty(Properties properties, string propertyName)
         {
-            foreach (SelectedItem selectedItem in dte.SelectedItems)
+            if (properties != null)
             {
-                if (selectedItem.Project == null)
+                foreach (Property item in properties)
                 {
-                    return;
+                    if (item != null && item.Name == propertyName)
+                    {
+                        return true;
+                    }
                 }
-
-                var project = selectedItem.Project;
-                var fullPathProperty = project.Properties.Item("FullPath");
-
-                if (fullPathProperty == null)
-                {
-                    return;
-                }
-
-                var fullPath = new FileInfo(fullPathProperty.Value.ToString());
-                System.Diagnostics.Process.Start("explorer.exe", "\"" + fullPath.Directory.FullName + "\"");
             }
+            return false;
+        }
+
+        private bool FolderOfProject(SelectedItem selectedItem, string property)
+        {
+            if (selectedItem.Project == null)
+            {
+                return false;
+            }
+
+            var project = selectedItem.Project;
+            if(HasProperty(project.Properties, property) == false)
+            {
+                return false;
+            }
+
+            var fullPathProperty = project.Properties.Item(property);
+            if (fullPathProperty == null)
+            {
+                return false;
+            }
+
+            var fullPath = new FileInfo(fullPathProperty.Value.ToString());
+            System.Diagnostics.Process.Start("explorer.exe", "\"" + fullPath.Directory.FullName + "\"");
+            return true;
         }
 
         /// <summary>
@@ -158,14 +173,25 @@ namespace OpenFolderExtension
             {
                 if (selectedItem.Project != null)
                 {
-                    FolderOfProject(dte);
-                    return;
+                    // C# Project has the FullPath property
+                    if (FolderOfProject(selectedItem, "FullPath"))
+                    {
+                        return;
+                    }
+
+                    // C++ Project has the ProjectFile property
+                    if (FolderOfProject(selectedItem, "ProjectFile"))
+                    {
+                        return;
+                    }
                 }
 
                 if (selectedItem.ProjectItem != null)
                 {
-                    FolderOfProjectItem(dte);
-                    return;
+                    if(FolderOfProjectItem(selectedItem))
+                    {
+                        return;
+                    }
                 }
             }
         }
