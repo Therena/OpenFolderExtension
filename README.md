@@ -17,7 +17,8 @@ Select a file or a project in the Solution Explorer and right-click it.
 
 ![Contextmenu](Images/contextmenu.png)
 
-And the select the "Open folder" to open the explorer.
+And then select the "Open folder" to open the explorer.
+
 ![Explorer Opened](Images/explorerOpened.png)
 
 ## Contribute
