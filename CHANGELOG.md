@@ -18,3 +18,9 @@ on the official Visual Studio extension gallery.
 **2016-04-21**
 
 - [x] Fixed the failing open containing folder command for C++ projects
+
+## 1.1.0.1
+
+**2016-04-26**
+
+- [x] Visual Studio 2013 compatibility
