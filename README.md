@@ -4,7 +4,7 @@ Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.m
 
 ---------------------------------------
 
-Open containing folder feature for all items within the solution explorer.
+Open folder feature for all items within the solution explorer.
  
 See the [changelog](CHANGELOG.md) for changes and roadmap.
 
