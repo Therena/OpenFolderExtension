@@ -24,3 +24,9 @@ on the official Visual Studio extension gallery.
 **2016-04-26**
 
 - [x] Visual Studio 2013 compatibility
+
+## 1.1.0.2
+
+**2016-05-02**
+
+- [x] Open output folder of a project from solution explorer

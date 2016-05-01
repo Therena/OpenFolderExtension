@@ -15,10 +15,11 @@
 //
 using System;
 using System.ComponentModel.Design;
+using System.Globalization;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using EnvDTE80;
 using EnvDTE;
+using EnvDTE80;
 using System.IO;
 
 namespace OpenFolderExtension
@@ -26,17 +27,17 @@ namespace OpenFolderExtension
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class OpenFolder
+    internal sealed class OpenOutDirectory
     {
         /// <summary>
         /// Command ID.
         /// </summary>
-        public const int CommandId = 0x0100;
+        public const int CommandId = 256;
 
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("7f67f2cb-b6b3-478a-8dc4-7dbd77df5c6e");
+        public static readonly Guid CommandSet = new Guid("04226f4d-6dc8-4d01-bc22-1fcdb47554ad");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -44,11 +45,11 @@ namespace OpenFolderExtension
         private readonly Package package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenFolder"/> class.
+        /// Initializes a new instance of the <see cref="OpenOutDirectory"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
-        private OpenFolder(Package package)
+        private OpenOutDirectory(Package package)
         {
             if (package == null)
             {
@@ -69,7 +70,7 @@ namespace OpenFolderExtension
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static OpenFolder Instance
+        public static OpenOutDirectory Instance
         {
             get;
             private set;
@@ -92,7 +93,7 @@ namespace OpenFolderExtension
         /// <param name="package">Owner package, not null.</param>
         public static void Initialize(Package package)
         {
-            Instance = new OpenFolder(package);
+            Instance = new OpenOutDirectory(package);
         }
 
         /// <summary>
@@ -115,13 +116,11 @@ namespace OpenFolderExtension
             {
                 if (selectedItem.Project != null)
                 {
-                    var path = folders.GetProjectPath(selectedItem.Project);
-                    System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
-                }
-
-                if (selectedItem.ProjectItem != null)
-                {
-                    var path = folders.GetProjectItemPath(selectedItem.ProjectItem);
+                    var path = folders.GetOutputPath(selectedItem.Project);
+                    if (string.IsNullOrWhiteSpace(path))
+                    {
+                        return;
+                    }
                     System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
                 }
             }

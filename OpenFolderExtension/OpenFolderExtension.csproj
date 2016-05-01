@@ -51,8 +51,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Folders.cs" />
     <Compile Include="OpenFolder.cs" />
     <Compile Include="OpenFolderPackage.cs" />
+    <Compile Include="OpenOutDirectory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

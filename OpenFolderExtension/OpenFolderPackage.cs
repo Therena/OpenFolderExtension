@@ -70,6 +70,7 @@ namespace OpenFolderExtension
         {
             OpenFolder.Initialize(this);
             base.Initialize();
+            OpenOutDirectory.Initialize(this);
         }
 
         #endregion

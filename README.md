@@ -11,6 +11,7 @@ See the [changelog](CHANGELOG.md) for changes and roadmap.
 ## Features
 
 - Open the containing folder of a file in the Solution Explorer
+- Open output folder of a project from solution explorer
 
 ### Open the containing folder of a file in the Solution Explorer
 Select a file or a project in the Solution Explorer and right-click it.
@@ -20,6 +21,13 @@ Select a file or a project in the Solution Explorer and right-click it.
 And then select the "Open folder" to open the explorer.
 
 ![Explorer Opened](Images/explorerOpened.png)
+
+### Open output folder of a project from solution explorer
+Select a project in the Solution Explorer and right-click it.
+![Contextmenu Output](Images/contextmenu_output.png)
+
+And then select the "Open output path" to open the explorer.
+![Explorer Opened Output](Images/explorerOpened_output.png)
 
 ## Contribute
 Check out the [contribution guidelines](CONTRIBUTING.md)
