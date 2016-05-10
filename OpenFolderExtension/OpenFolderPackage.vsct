@@ -16,60 +16,60 @@ limitations under the License.
 -->
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <Extern href="stdidcmd.h" />
-  <Extern href="vsshlids.h" />
-    
-  <Commands package="guidOpenFolderPackage">
-      
-    <Groups>
-      <Group guid="guidOpenFolderPackageCmdSet" id="OpenFolderMenuGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
-      </Group>
-        <Group guid="guidOpenFolderPackageCmdSet" id="OpenFolderMenuGroup" priority="0x0600">
-            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
-        </Group>
-      <Group guid="guidOpenFolderPackageCmdSet1" id="OpenOutputGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
-      </Group>
-    </Groups>
-      
-    <Buttons>
-      <Button guid="guidOpenFolderPackageCmdSet" id="OpenFolderId" priority="0x0100" type="Button">
-        <Parent guid="guidOpenFolderPackageCmdSet" id="OpenFolderMenuGroup" />
-        <Icon guid="guidImages" id="bmpPicOpenFolder" />
-        <Strings>
-          <ButtonText>Open folder</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidOpenFolderPackageCmdSet1" id="cmdidOpenOutDirectory" priority="0x0100" type="Button">
-        <Parent guid="guidOpenFolderPackageCmdSet1" id="OpenOutputGroup" />
-        <Icon guid="guidImages" id="bmpPicOpenFolder" />
-        <Strings>
-          <ButtonText>Open output path</ButtonText>
-        </Strings>
-      </Button>
-    </Buttons>
-      
-    <Bitmaps>
-      <Bitmap guid="guidImages" href="Resources\OpenFolder.png" usedList="bmpPicOpenFolder" />
-    </Bitmaps>
-  </Commands>
+    <Extern href="stdidcmd.h" />
+    <Extern href="vsshlids.h" />
 
-  <Symbols>
-    <GuidSymbol name="guidOpenFolderPackage" value="{9a00504e-156b-4250-81b1-565c17b14a57}" />
-SS
-    <GuidSymbol name="guidOpenFolderPackageCmdSet" value="{7f67f2cb-b6b3-478a-8dc4-7dbd77df5c6e}">
-      <IDSymbol name="OpenFolderMenuGroup" value="0x1020" />
-      <IDSymbol name="OpenFolderId" value="0x0100" />
-    </GuidSymbol>
+    <Commands package="guidOpenFolderPackage">
 
-    <GuidSymbol name="guidImages" value="{7247c323-df3a-44eb-a13c-4db167fbea78}">
-      <IDSymbol name="bmpPicOpenFolder" value="1" />
-    </GuidSymbol>
-  
-    <GuidSymbol value="{04226f4d-6dc8-4d01-bc22-1fcdb47554ad}" name="guidOpenFolderPackageCmdSet1">
-      <IDSymbol value="4128" name="OpenOutputGroup" />
-      <IDSymbol value="256" name="cmdidOpenOutDirectory" />
-    </GuidSymbol>
-  </Symbols>
+        <Groups>
+            <Group guid="guidOpenFolderPackageCmdSet" id="OpenFolderMenuGroup" priority="0x0600">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+            </Group>
+            <Group guid="guidOpenFolderPackageCmdSet" id="OpenFolderMenuGroup" priority="0x0600">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+            </Group>
+            <Group guid="guidOpenFolderPackageCmdSet1" id="OpenOutputGroup" priority="0x0600">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+            </Group>
+        </Groups>
+
+        <Buttons>
+            <Button guid="guidOpenFolderPackageCmdSet" id="OpenFolderId" priority="0x0100" type="Button">
+                <Parent guid="guidOpenFolderPackageCmdSet" id="OpenFolderMenuGroup" />
+                <Icon guid="guidImages" id="bmpPicOpenFolder" />
+                <Strings>
+                    <ButtonText>Open folder</ButtonText>
+                </Strings>
+            </Button>
+            <Button guid="guidOpenFolderPackageCmdSet1" id="cmdidOpenOutDirectory" priority="0x0100" type="Button">
+                <Parent guid="guidOpenFolderPackageCmdSet1" id="OpenOutputGroup" />
+                <Icon guid="guidImages" id="bmpPicOpenFolder" />
+                <Strings>
+                    <ButtonText>Open output path</ButtonText>
+                </Strings>
+            </Button>
+        </Buttons>
+
+        <Bitmaps>
+            <Bitmap guid="guidImages" href="Resources\OpenFolder.png" usedList="bmpPicOpenFolder" />
+        </Bitmaps>
+    </Commands>
+
+    <Symbols>
+        <GuidSymbol name="guidOpenFolderPackage" value="{9a00504e-156b-4250-81b1-565c17b14a57}" />
+
+        <GuidSymbol name="guidOpenFolderPackageCmdSet" value="{7f67f2cb-b6b3-478a-8dc4-7dbd77df5c6e}">
+            <IDSymbol name="OpenFolderMenuGroup" value="0x1020" />
+            <IDSymbol name="OpenFolderId" value="0x0100" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidImages" value="{7247c323-df3a-44eb-a13c-4db167fbea78}">
+            <IDSymbol name="bmpPicOpenFolder" value="1" />
+        </GuidSymbol>
+
+        <GuidSymbol value="{04226f4d-6dc8-4d01-bc22-1fcdb47554ad}" name="guidOpenFolderPackageCmdSet1">
+            <IDSymbol value="4128" name="OpenOutputGroup" />
+            <IDSymbol value="256" name="cmdidOpenOutDirectory" />
+        </GuidSymbol>
+    </Symbols>
 </CommandTable>
