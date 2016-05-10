@@ -19,7 +19,6 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using EnvDTE80;
 using EnvDTE;
-using System.IO;
 
 namespace OpenFolderExtension
 {
