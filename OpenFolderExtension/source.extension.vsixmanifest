@@ -16,7 +16,7 @@ limitations under the License.
 -->
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="9a6a346e-9753-4703-8208-425eb1181d4d" Version="1.1.0.2" Language="en-US" Publisher="David Roller" />
+        <Identity Id="9a6a346e-9753-4703-8208-425eb1181d4d" Version="1.1.0.3" Language="en-US" Publisher="David Roller" />
         <DisplayName>OpenFolderExtension</DisplayName>
         <Description xml:space="preserve">Open folder feature for all items within the solution explorer.</Description>
         <License>Resources\LICENSE</License>
@@ -25,9 +25,9 @@ limitations under the License.
         <Tags>files, open, folder</Tags>
     </Metadata>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[12.0,15.0)" />
-        <InstallationTarget Version="[12.0,15.0)" Id="Microsoft.VisualStudio.Enterprise" />
-        <InstallationTarget Version="[12.0,15.0)" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[12.0,16.0)" />
+        <InstallationTarget Version="[12.0,16.0)" Id="Microsoft.VisualStudio.Enterprise" />
+        <InstallationTarget Version="[12.0,16.0)" Id="Microsoft.VisualStudio.Pro" />
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />

@@ -30,3 +30,9 @@ on the official Visual Studio extension gallery.
 **2016-05-02**
 
 - [x] Open output folder of a project from solution explorer
+
+## 1.1.0.3
+
+**2016-05-16**
+
+- [x] Support for Visual Studio 115 
