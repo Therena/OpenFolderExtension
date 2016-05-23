@@ -35,4 +35,10 @@ on the official Visual Studio extension gallery.
 
 **2016-05-16**
 
-- [x] Support for Visual Studio 115 
+- [x] Support for Visual Studio 15 
+
+## 1.1.0.4
+
+**2016-05-23**
+
+- [x] Remove Microsoft.VisualStudio.MPF.14.0 for Visual Studio 2013 compatibility
