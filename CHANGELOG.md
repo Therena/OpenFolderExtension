@@ -42,3 +42,9 @@ on the official Visual Studio extension gallery.
 **2016-05-23**
 
 - [x] Remove Microsoft.VisualStudio.MPF.14.0 for Visual Studio 2013 compatibility
+
+## 1.1.0.5
+
+**2016-06-03**
+
+- [x] Skipped Visual Studio 2013 support because of incompatibilities of dependencies
