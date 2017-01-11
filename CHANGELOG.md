@@ -55,3 +55,9 @@ on the official Visual Studio extension gallery.
 
 - [x] Minor changes and refactoring
 - [x] Updated 3rdParty packages
+
+## 1.1.0.7
+
+**2016-01-11**
+
+- [x] Upgrade extension for Visual Studio 2017
