@@ -76,17 +76,23 @@ namespace OpenFolderExtension
             var folders = new Folders();
             foreach (SelectedItem selectedItem in dte.SelectedItems)
             {
+                var path = "";
                 if (selectedItem.Project != null)
                 {
-                    var path = folders.GetProjectPath(selectedItem.Project);
-                    System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
+                    path = folders.GetProjectPath(selectedItem.Project);
                 }
 
                 if (selectedItem.ProjectItem != null)
                 {
-                    var path = folders.GetProjectItemPath(selectedItem.ProjectItem);
-                    System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
+                    path = folders.GetProjectItemPath(selectedItem.ProjectItem);
                 }
+
+                if (string.IsNullOrWhiteSpace(path))
+                {
+                    return;
+                }
+
+                System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
             }
         }
     }
