@@ -58,6 +58,12 @@ on the official Visual Studio extension gallery.
 
 ## 1.1.0.7
 
-**2016-01-11**
+**2017-01-11**
 
 - [x] Upgrade extension for Visual Studio 2017
+
+## 1.1.0.8
+
+**2017-03-18**
+
+- [x] Updated the dependencies
