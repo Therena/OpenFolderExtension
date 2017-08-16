@@ -73,3 +73,9 @@ on the official Visual Studio extension gallery.
 **2017-03-24**
 
 - [x] Fixed the "Open output path" for C++ projects
+
+## 1.1.0.10
+
+**2017-08-16**
+
+- [x] Updated the dependencies
