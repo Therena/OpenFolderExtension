@@ -20,6 +20,16 @@ namespace OpenFolderExtension
 {
     internal sealed class Folders
     {
+        public string GetSolutionPath(Solution sln)
+        {
+            var slnFile = new FileInfo(sln.FullName);
+            if (slnFile.Directory.Exists)
+            {
+                return slnFile.Directory.FullName;
+            }
+            return string.Empty;
+        }
+        
         public string GetProjectPath(Project proj)
         {
             // C# Project has the FullPath property

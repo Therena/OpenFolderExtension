@@ -38,6 +38,8 @@ namespace OpenFolderExtension
         protected override void Initialize()
         {
             OpenFolder.Initialize(this);
+            OpenFolderSolutionNode.Initialize(this);
+
             base.Initialize();
             OpenOutDirectory.Initialize(this);
         }

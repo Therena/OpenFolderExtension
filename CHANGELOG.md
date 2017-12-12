@@ -79,3 +79,10 @@ on the official Visual Studio extension gallery.
 **2017-08-16**
 
 - [x] Updated the dependencies
+
+## 1.1.0.11
+
+**2017-12-12**
+
+- [x] Added open folder button to solution context menu
+- [x] Updated the dependencies
