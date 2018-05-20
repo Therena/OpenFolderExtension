@@ -1,43 +1,33 @@
 # OpenFolderExtension
 
-Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/2fad2b0f-c4eb-4ba1-91a2-11def441b4a1)
-
----------------------------------------
-
 Open folder feature for all items within the solution explorer.
- 
-See the [changelog](CHANGELOG.md) for changes and roadmap.
+Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/2fad2b0f-c4eb-4ba1-91a2-11def441b4a1)
 
 ## Features
 
-- Open the containing folder of a file in the Solution Explorer
+- Open the containing folder of a file in the solution explorer
 - Open output folder of a project from solution explorer
 
 ### Open the containing folder of a file in the Solution Explorer
+
 Select a file or a project in the Solution Explorer and right-click it.
 
-![Contextmenu](Images/contextmenu.png)
+![Context menu](https://github.com/Therena/OpenFolderExtension/blob/master/Images/contextmenu.png?raw=true)
 
 And then select the "Open folder" to open the explorer.
 
-![Explorer Opened](Images/explorerOpened.png)
+![Explorer opened](https://github.com/Therena/OpenFolderExtension/blob/master/Images/explorerOpened.png?raw=true)
 
 ### Open output folder of a project from solution explorer
+
 Select a project in the Solution Explorer and right-click it.
-![Contextmenu Output](Images/contextmenu_output.png)
+
+![Context menu output](https://github.com/Therena/OpenFolderExtension/blob/master/Images/contextmenu_output.png?raw=true)
 
 And then select the "Open output path" to open the explorer.
-![Explorer Opened Output](Images/explorerOpened_output.png)
 
-## Contribute
-Check out the [contribution guidelines](CONTRIBUTING.md)
-if you want to contribute to this project.
-
-For cloning and building this project yourself, make sure
-to install the
-[Extensibility Tools 2015](https://visualstudiogallery.msdn.microsoft.com/ab39a092-1343-46e2-b0f1-6a3f91155aa6)
-extension for Visual Studio which enables some features
-used by this project.
+![Explorer opened output](https://github.com/Therena/OpenFolderExtension/blob/master/Images/explorerOpened_output.png?raw=true)
 
 ## License
-[Apache 2.0](LICENSE)
+
+[Apache 2.0](https://github.com/Therena/OpenFolderExtension/blob/master/LICENSE)
