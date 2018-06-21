@@ -26,10 +26,10 @@ namespace OpenFolderExtension
     internal sealed class OpenOutDirectory
     {
         public const int CommandId = 256;
-        private readonly Package package;
+        private readonly AsyncPackage package;
         public static readonly Guid CommandSet = new Guid("04226f4d-6dc8-4d01-bc22-1fcdb47554ad");
 
-        private OpenOutDirectory(Package package)
+        private OpenOutDirectory(AsyncPackage package)
         {
             if (package == null)
             {
@@ -61,7 +61,7 @@ namespace OpenFolderExtension
             }
         }
 
-        public static void Initialize(Package package)
+        public static void Initialize(AsyncPackage package)
         {
             Instance = new OpenOutDirectory(package);
         }
