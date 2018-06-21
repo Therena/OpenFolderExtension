@@ -25,10 +25,10 @@ namespace OpenFolderExtension
     internal sealed class OpenFolder
     {
         public const int CommandId = 0x0100;
-        private readonly Package package;
+        private readonly AsyncPackage package;
         public static readonly Guid CommandSet = new Guid("7f67f2cb-b6b3-478a-8dc4-7dbd77df5c6e");
 
-        private OpenFolder(Package package)
+        private OpenFolder(AsyncPackage package)
         {
             if (package == null)
             {
@@ -60,7 +60,7 @@ namespace OpenFolderExtension
             }
         }
 
-        public static void Initialize(Package package)
+        public static void Initialize(AsyncPackage package)
         {
             Instance = new OpenFolder(package);
         }

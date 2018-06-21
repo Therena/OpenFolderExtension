@@ -25,10 +25,10 @@ namespace OpenFolderExtension
     internal class OpenFolderSolutionNode
     {
         public const int CommandId = 0x0100;
-        private readonly Package package;
+        private readonly AsyncPackage package;
         public static readonly Guid CommandSet = new Guid("A7608B14-BE08-43F5-923F-B3EAE6208D93");
 
-        private OpenFolderSolutionNode(Package package)
+        private OpenFolderSolutionNode(AsyncPackage package)
         {
             if (package == null)
             {
@@ -60,7 +60,7 @@ namespace OpenFolderExtension
             }
         }
 
-        public static void Initialize(Package package)
+        public static void Initialize(AsyncPackage package)
         {
             Instance = new OpenFolderSolutionNode(package);
         }

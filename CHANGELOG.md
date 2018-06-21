@@ -98,3 +98,10 @@ on the official Visual Studio extension gallery.
 **2018-05-06**
 
 - [x] Updated the dependencies
+
+## 1.1.0.14
+
+**2018-06-21**
+
+- [x] Updated the dependencies
+- [x] Change to the async extension loading method

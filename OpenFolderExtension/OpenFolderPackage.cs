@@ -16,16 +16,17 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Microsoft.VisualStudio.Shell;
 
 namespace OpenFolderExtension
 {
-    [PackageRegistration(UseManagedResourcesOnly = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(OpenFolderPackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
-    public sealed class OpenFolderPackage : Package
+    public sealed class OpenFolderPackage : AsyncPackage
     {
         public const string PackageGuidString = "9a00504e-156b-4250-81b1-565c17b14a57";
 
@@ -34,15 +35,16 @@ namespace OpenFolderExtension
 
         }
 
-        #region Package Members
-        protected override void Initialize()
+        protected override System.Threading.Tasks.Task InitializeAsync(
+            CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             OpenFolder.Initialize(this);
             OpenFolderSolutionNode.Initialize(this);
 
             base.Initialize();
             OpenOutDirectory.Initialize(this);
+
+            return System.Threading.Tasks.Task.CompletedTask;
         }
-        #endregion
     }
 }
