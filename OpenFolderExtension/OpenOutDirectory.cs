@@ -19,6 +19,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using EnvDTE;
 using EnvDTE80;
+using System.IO;
 
 namespace OpenFolderExtension
 {
@@ -31,15 +32,9 @@ namespace OpenFolderExtension
 
         private OpenOutDirectory(AsyncPackage package)
         {
-            if (package == null)
-            {
-                throw new ArgumentNullException("package");
-            }
+            this.package = package ?? throw new ArgumentNullException("package");
 
-            this.package = package;
-
-            OleMenuCommandService commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            if (commandService != null)
+            if (ServiceProvider.GetService(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
             {
                 var menuCommandID = new CommandID(CommandSet, CommandId);
                 var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandID);
@@ -68,14 +63,15 @@ namespace OpenFolderExtension
 
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            var dte = this.ServiceProvider.GetService(typeof(SDTE)) as DTE2;
-            if (dte.SelectedItems.Count <= 0)
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            if ((ServiceProvider.GetService(typeof(SDTE)) as DTE2).SelectedItems.Count <= 0)
             {
                 return;
             }
 
             var folders = new Folders();
-            foreach (SelectedItem selectedItem in dte.SelectedItems)
+            foreach (SelectedItem selectedItem in (ServiceProvider.GetService(typeof(SDTE)) as DTE2).SelectedItems)
             {
                 if (selectedItem.Project != null)
                 {
@@ -84,6 +80,12 @@ namespace OpenFolderExtension
                     {
                         return;
                     }
+
+                    if(Directory.Exists(path) == false)
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
                     System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
                 }
             }

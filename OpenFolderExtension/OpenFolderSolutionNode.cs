@@ -30,15 +30,9 @@ namespace OpenFolderExtension
 
         private OpenFolderSolutionNode(AsyncPackage package)
         {
-            if (package == null)
-            {
-                throw new ArgumentNullException("package");
-            }
+            this.package = package ?? throw new ArgumentNullException("package");
 
-            this.package = package;
-
-            OleMenuCommandService commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            if (commandService != null)
+            if (ServiceProvider.GetService(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
             {
                 var menuCommandID = new CommandID(CommandSet, CommandId);
                 var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandID);
@@ -67,14 +61,15 @@ namespace OpenFolderExtension
 
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            var dte = this.ServiceProvider.GetService(typeof(SDTE)) as DTE2;
-            if (dte.SelectedItems.Count <= 0)
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            if ((ServiceProvider.GetService(typeof(SDTE)) as DTE2).SelectedItems.Count <= 0)
             {
                 return;
             }
 
             var folders = new Folders();
-            var path = folders.GetSolutionPath(dte.Solution);
+            var path = folders.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2).Solution);
             
             if (string.IsNullOrWhiteSpace(path))
             {
