@@ -113,3 +113,9 @@ on the official Visual Studio extension gallery.
 - [x] Updated the dependencies
 - [x] Fixed a issue with C++ out path
 - [x] Code refactoring
+
+## 1.1.0.16
+
+**2018-11-26**
+
+- [x] Updated the dependencies
