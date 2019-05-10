@@ -16,8 +16,8 @@ limitations under the License.
 -->
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="9a6a346e-9753-4703-8208-425eb1181d4d" Version="1.2019.0.0" Language="en-US" Publisher="David Roller" />
-        <DisplayName>OpenFolderExtension</DisplayName>
+        <Identity Id="1BDE1A29-4E0F-443C-A504-C44F89D70D98" Version="1.2019.0.0" Language="en-US" Publisher="David Roller" />
+        <DisplayName>Open Folder Extension 2019</DisplayName>
         <Description xml:space="preserve">Open folder feature for all items within the solution explorer.</Description>
         <License>Resources\LICENSE</License>
         <Icon>Resources\Icon.png</Icon>
@@ -25,16 +25,16 @@ limitations under the License.
         <Tags>files, open, folder</Tags>
     </Metadata>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,16.0)" />
-        <InstallationTarget Version="[14.0,16.0)" Id="Microsoft.VisualStudio.Enterprise" />
-        <InstallationTarget Version="[14.0,16.0)" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0,17.0)" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Enterprise" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Pro" />
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.6,)" />
     </Dependencies>
     <Prerequisites>
-        <Prerequisite DisplayName="Visual Studio-Kern-Editor" Version="[15.0,16.0)" Id="Microsoft.VisualStudio.Component.CoreEditor" />
-        <Prerequisite Id="Microsoft.VisualStudio.Component.DiagnosticTools" Version="[15.0.26004.1,16.0)" DisplayName="Profilerstellungstools" />
+        <Prerequisite DisplayName="Visual Studio-Kern-Editor" Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Component.CoreEditor" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.DiagnosticTools" Version="[16.0,17.0)" DisplayName="Profilerstellungstools" />
     </Prerequisites>
     <Assets>
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
