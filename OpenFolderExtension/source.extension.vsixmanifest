@@ -17,7 +17,7 @@ limitations under the License.
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="9a6a346e-9753-4703-8208-425eb1181d4d" Version="1.2017.0.0" Language="en-US" Publisher="David Roller" />
-        <DisplayName>OpenFolderExtension</DisplayName>
+        <DisplayName>Open Folder Extension 2017</DisplayName>
         <Description xml:space="preserve">Open folder feature for all items within the solution explorer.</Description>
         <License>Resources\LICENSE</License>
         <Icon>Resources\Icon.png</Icon>
