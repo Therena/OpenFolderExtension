@@ -33,4 +33,4 @@ And then select the "Open output path" to open the explorer.
 
 ## License
 
-[Apache 2.0](https://github.com/Therena/OpenFolderExtension/blob/master/LICENSE)
+[Apache 2.0](https://github.com/Therena/OpenFolderExtension/blob/VisualStudio2017/LICENSE)
