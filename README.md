@@ -12,21 +12,21 @@ Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.m
 
 Select a file or a project in the Solution Explorer and right-click it.
 
-![Context menu](https://github.com/Therena/OpenFolderExtension/blob/master/Images/contextmenu.png?raw=true)
+![Context menu](https://github.com/Therena/OpenFolderExtension/blob/VisualStudio2017/Images/contextmenu.png?raw=true)
 
 And then select the "Open folder" to open the explorer.
 
-![Explorer opened](https://github.com/Therena/OpenFolderExtension/blob/master/Images/explorerOpened.png?raw=true)
+![Explorer opened](https://github.com/Therena/OpenFolderExtension/blob/VisualStudio2017/Images/explorerOpened.png?raw=true)
 
 ### Open output folder of a project from solution explorer
 
 Select a project in the Solution Explorer and right-click it.
 
-![Context menu output](https://github.com/Therena/OpenFolderExtension/blob/master/Images/contextmenu_output.png?raw=true)
+![Context menu output](https://github.com/Therena/OpenFolderExtension/blob/VisualStudio2017/Images/contextmenu_output.png?raw=true)
 
 And then select the "Open output path" to open the explorer.
 
-![Explorer opened output](https://github.com/Therena/OpenFolderExtension/blob/master/Images/explorerOpened_output.png?raw=true)
+![Explorer opened output](https://github.com/Therena/OpenFolderExtension/blob/VisualStudio2017/Images/explorerOpened_output.png?raw=true)
 
 ## License
 
