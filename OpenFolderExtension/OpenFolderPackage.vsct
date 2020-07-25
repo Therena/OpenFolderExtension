@@ -24,10 +24,10 @@ limitations under the License.
       <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupItemNode" priority="0x0600">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
       </Group>
-      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupSolutionNode" priority="0x0600">
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupSolutionNode" priority="0x0800">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
       </Group>
-      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupProjectNode" priority="0x0600">
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupProjectNode" priority="0x0780">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
       <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupItemNode" priority="0x0600">
