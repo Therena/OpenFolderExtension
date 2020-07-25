@@ -18,6 +18,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.VisualStudio.Shell;
+using OpenFolderExtension.Commands;
 
 namespace OpenFolderExtension
 {
@@ -38,11 +39,12 @@ namespace OpenFolderExtension
         protected override System.Threading.Tasks.Task InitializeAsync(
             CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            OpenFolder.Initialize(this);
-            OpenFolderSolutionNode.Initialize(this);
+            OpenContainingFolderItemNode.Initialize(this);
+            OpenContainingFolderProjectNode.Initialize(this);
+            OpenContainingFolderSolutionNode.Initialize(this);
+            OpenOutDirectoryProjectNode.Initialize(this);
 
             base.Initialize();
-            OpenOutDirectory.Initialize(this);
 
             return System.Threading.Tasks.Task.CompletedTask;
         }

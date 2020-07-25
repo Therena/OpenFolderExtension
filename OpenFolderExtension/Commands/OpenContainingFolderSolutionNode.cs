@@ -17,20 +17,18 @@ using System;
 using System.ComponentModel.Design;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using EnvDTE;
 using EnvDTE80;
-using System.IO;
+using EnvDTE;
 
-namespace OpenFolderExtension
+namespace OpenFolderExtension.Commands
 {
-
-    internal sealed class OpenOutDirectory
+    internal sealed class OpenContainingFolderSolutionNode
     {
-        public const int CommandId = 256;
+        public const int CommandId = 0x3002;
         private readonly AsyncPackage package;
-        public static readonly Guid CommandSet = new Guid("04226f4d-6dc8-4d01-bc22-1fcdb47554ad");
+        public static readonly Guid CommandSet = new Guid("3D94678C-412C-47E9-A4B9-DEF3BE3AAD1E");
 
-        private OpenOutDirectory(AsyncPackage package)
+        private OpenContainingFolderSolutionNode(AsyncPackage package)
         {
             this.package = package ?? throw new ArgumentNullException("package");
 
@@ -42,7 +40,7 @@ namespace OpenFolderExtension
             }
         }
 
-        public static OpenOutDirectory Instance
+        public static OpenContainingFolderSolutionNode Instance
         {
             get;
             private set;
@@ -58,7 +56,7 @@ namespace OpenFolderExtension
 
         public static void Initialize(AsyncPackage package)
         {
-            Instance = new OpenOutDirectory(package);
+            Instance = new OpenContainingFolderSolutionNode(package);
         }
 
         private void MenuItemCallback(object sender, EventArgs e)
@@ -71,24 +69,13 @@ namespace OpenFolderExtension
             }
 
             var folders = new Folders();
-            foreach (SelectedItem selectedItem in (ServiceProvider.GetService(typeof(SDTE)) as DTE2).SelectedItems)
+            var path = folders.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2).Solution);
+
+            if (string.IsNullOrWhiteSpace(path))
             {
-                if (selectedItem.Project != null)
-                {
-                    var path = folders.GetOutputPath(selectedItem.Project);
-                    if (string.IsNullOrWhiteSpace(path))
-                    {
-                        return;
-                    }
-
-                    if(Directory.Exists(path) == false)
-                    {
-                        Directory.CreateDirectory(path);
-                    }
-
-                    System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
-                }
+                return;
             }
+            System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
         }
     }
 }
