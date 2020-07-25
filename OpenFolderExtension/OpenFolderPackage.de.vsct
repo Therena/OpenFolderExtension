@@ -46,28 +46,28 @@ limitations under the License.
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupItemNode" />
         <Icon guid="guidImages" id="BmpPicOpenFolder" />
         <Strings>
-          <ButtonText>Übergeordneten Ordner öffnen</ButtonText>
+          <ButtonText>Open containing folder</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidOpenFolderCommandSet" id="OpenFolderButtonSolutionNode" priority="0x0100" type="Button">
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupSolutionNode" />
         <Icon guid="guidImages" id="BmpPicOpenFolder" />
         <Strings>
-          <ButtonText>Übergeordneten Ordner öffnen</ButtonText>
+          <ButtonText>Open containing folder</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidOpenFolderCommandSet" id="OpenFolderButtonProjectNode" priority="0x0100" type="Button">
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
         <Icon guid="guidImages" id="BmpPicOpenFolder" />
         <Strings>
-          <ButtonText>Übergeordneten Ordner öffnen</ButtonText>
+          <ButtonText>Open containing folder</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidOpenFolderCommandSet" id="OpenOutDirectoryButtonProjectNode" priority="0x0200" type="Button">
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
         <Icon guid="guidImages" id="BmpPicOpenFolder" />
         <Strings>
-          <ButtonText>Ausgabepfad öffnen</ButtonText>
+          <ButtonText>Open output folder</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -80,19 +80,19 @@ limitations under the License.
       <Menu guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuItemNode" priority="0x0100" type="Menu">
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupItemNode"/>
         <Strings>
-          <ButtonText>Ordner im Datei-Explorer öffnen</ButtonText>
+          <ButtonText>Open folder in explorer</ButtonText>
         </Strings>
       </Menu>
       <Menu guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuSolutionNode" priority="0x0100" type="Menu">
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupSolutionNode"/>
         <Strings>
-          <ButtonText>Ordner im Datei-Explorer öffnen</ButtonText>
+          <ButtonText>Open folder in explorer</ButtonText>
         </Strings>
       </Menu>
       <Menu guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuProjectNode" priority="0x0100" type="Menu">
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupProjectNode"/>
         <Strings>
-          <ButtonText>Ordner im Datei-Explorer öffnen</ButtonText>
+          <ButtonText>Open folder in explorer</ButtonText>
         </Strings>
       </Menu>
     </Menus>
