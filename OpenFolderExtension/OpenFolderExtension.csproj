@@ -72,6 +72,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CommandsCommandLine\OpenContainingFolderItemNode.cs" />
+    <Compile Include="CommandsCommandLine\OpenContainingFolderProjectNode.cs" />
+    <Compile Include="CommandsCommandLine\OpenContainingFolderSolutionNode.cs" />
+    <Compile Include="CommandsCommandLine\OpenOutDirectoryProjectNode.cs" />
+    <Compile Include="CommandsPowershell\OpenContainingFolderItemNode.cs" />
+    <Compile Include="CommandsPowershell\OpenContainingFolderProjectNode.cs" />
+    <Compile Include="CommandsPowershell\OpenContainingFolderSolutionNode.cs" />
+    <Compile Include="CommandsPowershell\OpenOutDirectoryProjectNode.cs" />
     <Compile Include="Folders.cs" />
     <Compile Include="Commands\OpenContainingFolderItemNode.cs" />
     <Compile Include="Commands\OpenContainingFolderProjectNode.cs" />
@@ -102,20 +110,14 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="VSPackage.resx">
-      <MergeWithCTO>true</MergeWithCTO>
-      <ManifestResourceName>VSPackage</ManifestResourceName>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="OpenFolderPackage.de.vsct" />
     <Content Include="Resources\Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Resources\OpenFolder.png" />
-    <Content Include="Resources\OpenFolderPackage.ico" />
+    <Resource Include="Resources\OpenFolderCmd.ico" />
+    <Resource Include="Resources\OpenFolderPackage.ico" />
+    <Resource Include="Resources\OpenFolderPowershell.ico" />
     <Content Include="Resources\Preview.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -144,6 +146,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
