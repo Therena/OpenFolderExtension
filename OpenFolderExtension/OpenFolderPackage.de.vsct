@@ -36,7 +36,7 @@ limitations under the License.
       <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupSolutionNode" priority="0x0600">
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuSolutionNode" />
       </Group>
-      <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" priority="0xFFFFFF">
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" priority="0x0600">
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuProjectNode" />
       </Group>
     </Groups>
