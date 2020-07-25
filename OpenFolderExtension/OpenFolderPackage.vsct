@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2016 David Roller
+Copyright 2020 David Roller
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,75 +16,111 @@ limitations under the License.
 -->
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <Extern href="stdidcmd.h" />
-    <Extern href="vsshlids.h" />
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
 
-    <Commands package="guidOpenFolderPackage">
+  <Commands package="guidOpenFolderPackage">
+    <Groups>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupItemNode" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupSolutionNode" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupProjectNode" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupItemNode" priority="0x0600">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuItemNode" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupSolutionNode" priority="0x0600">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuSolutionNode" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" priority="0x0600">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuProjectNode" />
+      </Group>
+    </Groups>
 
-        <Groups>
-            <Group guid="guidOpenFolderSolutionNodeCmdSet" id="OpenFolderMenuGroup" priority="0x0600">
-                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
-            </Group>
-            <Group guid="guidOpenFolderPackageCmdSet" id="OpenFolderMenuGroup" priority="0x0600">
-                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
-            </Group>
-            <Group guid="guidOpenFolderPackageCmdSet" id="OpenFolderMenuGroup" priority="0x0600">
-                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
-            </Group>
-            <Group guid="guidOpenFolderPackageCmdSet1" id="OpenOutputGroup" priority="0x0600">
-                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
-            </Group>
-        </Groups>
+    <Buttons>
+      <Button guid="guidOpenFolderCommandSet" id="OpenFolderButtonItemNode" priority="0x0100" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupItemNode" />
+        <Icon guid="guidImages" id="BmpPicOpenFolder" />
+        <Strings>
+          <ButtonText>Open containing folder</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="OpenFolderButtonSolutionNode" priority="0x0100" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupSolutionNode" />
+        <Icon guid="guidImages" id="BmpPicOpenFolder" />
+        <Strings>
+          <ButtonText>Open containing folder</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="OpenFolderButtonProjectNode" priority="0x0100" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
+        <Icon guid="guidImages" id="BmpPicOpenFolder" />
+        <Strings>
+          <ButtonText>Open containing folder</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="OpenOutDirectoryButtonProjectNode" priority="0x0200" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
+        <Icon guid="guidImages" id="BmpPicOpenFolder" />
+        <Strings>
+          <ButtonText>Open output folder</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
 
-        <Buttons>
-            <Button guid="guidOpenFolderSolutionNodeCmdSet" id="OpenFolderId" priority="0x0100" type="Button">
-                <Parent guid="guidOpenFolderSolutionNodeCmdSet" id="OpenFolderMenuGroup" />
-                <Icon guid="guidImages" id="bmpPicOpenFolder" />
-                <Strings>
-                    <ButtonText>Open folder</ButtonText>
-                </Strings>
-            </Button>
-            <Button guid="guidOpenFolderPackageCmdSet" id="OpenFolderId" priority="0x0100" type="Button">
-                <Parent guid="guidOpenFolderPackageCmdSet" id="OpenFolderMenuGroup" />
-                <Icon guid="guidImages" id="bmpPicOpenFolder" />
-                <Strings>
-                    <ButtonText>Open folder</ButtonText>
-                </Strings>
-            </Button>
-            <Button guid="guidOpenFolderPackageCmdSet1" id="cmdidOpenOutDirectory" priority="0x0100" type="Button">
-                <Parent guid="guidOpenFolderPackageCmdSet1" id="OpenOutputGroup" />
-                <Icon guid="guidImages" id="bmpPicOpenFolder" />
-                <Strings>
-                    <ButtonText>Open output path</ButtonText>
-                </Strings>
-            </Button>
-        </Buttons>
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\OpenFolder.png" usedList="BmpPicOpenFolder" />
+    </Bitmaps>
 
-        <Bitmaps>
-            <Bitmap guid="guidImages" href="Resources\OpenFolder.png" usedList="bmpPicOpenFolder" />
-        </Bitmaps>
-    </Commands>
+    <Menus>
+      <Menu guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuItemNode" priority="0x0100" type="Menu">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupItemNode"/>
+        <Strings>
+          <ButtonText>Open folder in explorer</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuSolutionNode" priority="0x0100" type="Menu">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupSolutionNode"/>
+        <Strings>
+          <ButtonText>Open folder in explorer</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuProjectNode" priority="0x0100" type="Menu">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupProjectNode"/>
+        <Strings>
+          <ButtonText>Open folder in explorer</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+  </Commands>
 
-    <Symbols>
-        <GuidSymbol name="guidOpenFolderPackage" value="{9a00504e-156b-4250-81b1-565c17b14a57}" />
+  <Symbols>
+    <GuidSymbol name="guidOpenFolderPackage" value="{9a00504e-156b-4250-81b1-565c17b14a57}" />
 
-        <GuidSymbol name="guidOpenFolderPackageCmdSet" value="{7f67f2cb-b6b3-478a-8dc4-7dbd77df5c6e}">
-            <IDSymbol name="OpenFolderMenuGroup" value="0x1020" />
-            <IDSymbol name="OpenFolderId" value="0x0100" />
-        </GuidSymbol>
-      
-        <GuidSymbol name="guidOpenFolderSolutionNodeCmdSet" value="{A7608B14-BE08-43F5-923F-B3EAE6208D93}">
-            <IDSymbol name="OpenFolderMenuGroup" value="0x1020" />
-            <IDSymbol name="OpenFolderId" value="0x0100" />
-        </GuidSymbol>
+    <GuidSymbol name="guidOpenFolderCommandSet" value="{3D94678C-412C-47E9-A4B9-DEF3BE3AAD1E}">
+      <IDSymbol name="OpenFolderMenuGroupItemNode" value="0x1001" />
+      <IDSymbol name="OpenFolderMenuGroupSolutionNode" value="0x1002" />
+      <IDSymbol name="OpenFolderMenuGroupProjectNode" value="0x1003" />
+      <IDSymbol name="OpenFolderSubMenuGroupItemNode" value="0x1004" />
+      <IDSymbol name="OpenFolderSubMenuGroupSolutionNode" value="0x1005" />
+      <IDSymbol name="OpenFolderSubMenuGroupProjectNode" value="0x1006" />
 
-        <GuidSymbol name="guidImages" value="{7247c323-df3a-44eb-a13c-4db167fbea78}">
-            <IDSymbol name="bmpPicOpenFolder" value="1" />
-        </GuidSymbol>
+      <IDSymbol name="OpenFolderSubMenuItemNode" value="0x2001" />
+      <IDSymbol name="OpenFolderSubMenuSolutionNode" value="0x2002" />
+      <IDSymbol name="OpenFolderSubMenuProjectNode" value="0x2003" />
 
-        <GuidSymbol value="{04226f4d-6dc8-4d01-bc22-1fcdb47554ad}" name="guidOpenFolderPackageCmdSet1">
-            <IDSymbol value="4128" name="OpenOutputGroup" />
-            <IDSymbol value="256" name="cmdidOpenOutDirectory" />
-        </GuidSymbol>
-    </Symbols>
+      <IDSymbol name="OpenFolderButtonItemNode" value="0x3001" />
+      <IDSymbol name="OpenFolderButtonSolutionNode" value="0x3002" />
+      <IDSymbol name="OpenFolderButtonProjectNode" value="0x3003" />
+      <IDSymbol name="OpenOutDirectoryButtonProjectNode" value="0x3004" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{9C2DA68D-BA68-4B14-8583-776924A41DB4}" >
+      <IDSymbol name="BmpPicOpenFolder" value="1" />
+    </GuidSymbol>
+  </Symbols>
 </CommandTable>

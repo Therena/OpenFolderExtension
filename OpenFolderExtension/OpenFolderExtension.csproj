@@ -73,10 +73,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Folders.cs" />
-    <Compile Include="OpenFolder.cs" />
+    <Compile Include="Commands\OpenContainingFolderItemNode.cs" />
+    <Compile Include="Commands\OpenContainingFolderProjectNode.cs" />
+    <Compile Include="Commands\OpenContainingFolderSolutionNode.cs" />
     <Compile Include="OpenFolderPackage.cs" />
-    <Compile Include="OpenFolderSolutionNode.cs" />
-    <Compile Include="OpenOutDirectory.cs" />
+    <Compile Include="Commands\OpenOutDirectoryProjectNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

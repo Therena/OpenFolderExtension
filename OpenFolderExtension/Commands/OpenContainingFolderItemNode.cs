@@ -20,15 +20,15 @@ using Microsoft.VisualStudio.Shell.Interop;
 using EnvDTE80;
 using EnvDTE;
 
-namespace OpenFolderExtension
+namespace OpenFolderExtension.Commands
 {
-    internal class OpenFolderSolutionNode
+    internal sealed class OpenContainingFolderItemNode
     {
-        public const int CommandId = 0x0100;
+        public const int CommandId = 0x3001;
         private readonly AsyncPackage package;
-        public static readonly Guid CommandSet = new Guid("A7608B14-BE08-43F5-923F-B3EAE6208D93");
+        public static readonly Guid CommandSet = new Guid("3D94678C-412C-47E9-A4B9-DEF3BE3AAD1E");
 
-        private OpenFolderSolutionNode(AsyncPackage package)
+        private OpenContainingFolderItemNode(AsyncPackage package)
         {
             this.package = package ?? throw new ArgumentNullException("package");
 
@@ -40,7 +40,7 @@ namespace OpenFolderExtension
             }
         }
 
-        public static OpenFolderSolutionNode Instance
+        public static OpenContainingFolderItemNode Instance
         {
             get;
             private set;
@@ -56,7 +56,7 @@ namespace OpenFolderExtension
 
         public static void Initialize(AsyncPackage package)
         {
-            Instance = new OpenFolderSolutionNode(package);
+            Instance = new OpenContainingFolderItemNode(package);
         }
 
         private void MenuItemCallback(object sender, EventArgs e)
@@ -69,13 +69,26 @@ namespace OpenFolderExtension
             }
 
             var folders = new Folders();
-            var path = folders.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2).Solution);
-            
-            if (string.IsNullOrWhiteSpace(path))
+            foreach (SelectedItem selectedItem in (ServiceProvider.GetService(typeof(SDTE)) as DTE2).SelectedItems)
             {
-                return;
+                var path = "";
+                if (selectedItem.Project != null)
+                {
+                    path = folders.GetProjectPath(selectedItem.Project);
+                }
+
+                if (selectedItem.ProjectItem != null)
+                {
+                    path = folders.GetProjectItemPath(selectedItem.ProjectItem);
+                }
+
+                if (string.IsNullOrWhiteSpace(path))
+                {
+                    return;
+                }
+
+                System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
             }
-            System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
         }
     }
 }
