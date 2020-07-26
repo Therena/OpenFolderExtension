@@ -11,6 +11,16 @@ Download this extension from the Visual Studio Marketplace
 - Open the containing folder of a file in the solution explorer
 - Open output folder of a project from solution explorer
 
+The folder can be opened in the fllowing application:
+- File Explorer
+- Powershell
+- Command line
+
+## Languages
+
+- en-US American English
+- de-DE Standard German
+
 ### Open the containing folder of a file in the Solution Explorer
 
 Select a file or a project in the Solution Explorer and right-click it.
@@ -19,7 +29,7 @@ Select a file or a project in the Solution Explorer and right-click it.
 
 And then select the "Open folder" to open the explorer.
 
-![Explorer opened](https://github.com/Therena/OpenFolderExtension/blob/master/Images/explorerOpened.png?raw=true)
+![Explorer opened](https://github.com/Therena/OpenFolderExtension/blob/master/Images/opened.png?raw=true)
 
 ### Open output folder of a project from solution explorer
 
@@ -29,7 +39,7 @@ Select a project in the Solution Explorer and right-click it.
 
 And then select the "Open output path" to open the explorer.
 
-![Explorer opened output](https://github.com/Therena/OpenFolderExtension/blob/master/Images/explorerOpened_output.png?raw=true)
+![Explorer opened output](https://github.com/Therena/OpenFolderExtension/blob/master/Images/opened_output.png?raw=true)
 
 ## License
 
