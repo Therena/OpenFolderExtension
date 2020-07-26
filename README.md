@@ -6,6 +6,11 @@ Download this extension from the Visual Studio Marketplace
 - Visual Studio 2015 - Visual Studio 2017: [Open Folder Extension 2017](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension)
 - Visual Studio 2019: [Open Folder Extension 2019](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2019)
 
+## Supported languages
+
+- en-US American English
+- de-DE Standard German
+
 ## Features
 
 - Open the containing folder of a file in the solution explorer
@@ -15,11 +20,6 @@ The folder can be opened in the fllowing application:
 - File Explorer
 - Powershell
 - Command line
-
-## Languages
-
-- en-US American English
-- de-DE Standard German
 
 ### Open the containing folder of a file in the Solution Explorer
 
