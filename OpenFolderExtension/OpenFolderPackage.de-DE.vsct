@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2020 David Roller
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+  <Include href="KnownImageIds.vsct"/>
+
+  <Commands package="guidOpenFolderPackage">
+    <Groups>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupItemNode" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupSolutionNode" priority="0x0800">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupProjectNode" priority="0x0780">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupItemNode" priority="0x0600">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuItemNode" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupSolutionNode" priority="0x0600">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuSolutionNode" />
+      </Group>
+      <Group guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" priority="0x0600">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuProjectNode" />
+      </Group>
+    </Groups>
+    
+    <Buttons>
+      <Button guid="guidOpenFolderCommandSet" id="Commands.OpenFolderButtonItemNode" priority="0x0001" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupItemNode" />
+        <Icon guid="ImageCatalogGuid" id="OpenFolder" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Übergeordneten Ordner in Datei-Explorer öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="Commands.OpenFolderButtonSolutionNode" priority="0x0002" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupSolutionNode" />
+        <Icon guid="ImageCatalogGuid" id="OpenFolder" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Übergeordneten Ordner in Datei-Explorer öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="Commands.OpenFolderButtonProjectNode" priority="0x0003" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
+        <Icon guid="ImageCatalogGuid" id="OpenFolder" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Übergeordneten Ordner in Datei-Explorer öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="Commands.OpenOutDirectoryButtonProjectNode" priority="0x0004" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
+        <Icon guid="ImageCatalogGuid" id="OpenFolder" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Ausgabepfad in Datei-Explorer öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="CommandsPowershell.OpenFolderButtonItemNode" priority="0x0005" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupItemNode" />
+        <Icon guid="ImageCatalogGuid" id="PowershellInteractiveWindow" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Übergeordneten Ordner in Powershell öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="CommandsPowershell.OpenFolderButtonSolutionNode" priority="0x0006" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupSolutionNode" />
+        <Icon guid="ImageCatalogGuid" id="PowershellInteractiveWindow" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Übergeordneten Ordner in Powershell öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="CommandsPowershell.OpenFolderButtonProjectNode" priority="0x0007" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
+        <Icon guid="ImageCatalogGuid" id="PowershellInteractiveWindow" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Übergeordneten Ordner in Powershell öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="CommandsPowershell.OpenOutDirectoryButtonProjectNode" priority="0x0008" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
+        <Icon guid="ImageCatalogGuid" id="PowershellInteractiveWindow" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Ausgabepfad in Powershell öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="CommandsCmd.OpenFolderButtonItemNode" priority="0x0009" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupItemNode" />
+        <Icon guid="ImageCatalogGuid" id="Console" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Übergeordneten Ordner in Eingabeaufforderung öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="CommandsCmd.OpenFolderButtonSolutionNode" priority="0x000A" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupSolutionNode" />
+        <Icon guid="ImageCatalogGuid" id="Console" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Übergeordneten Ordner in Eingabeaufforderung öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="CommandsCmd.OpenFolderButtonProjectNode" priority="0x000B" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
+        <Icon guid="ImageCatalogGuid" id="Console" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Übergeordneten Ordner in Eingabeaufforderung öffnen</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidOpenFolderCommandSet" id="CommandsCmd.OpenOutDirectoryButtonProjectNode" priority="0x000C" type="Button">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupProjectNode" />
+        <Icon guid="ImageCatalogGuid" id="Console" />
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Ausgabepfad in Eingabeaufforderung öffnen</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Menus>
+      <Menu guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuItemNode" priority="0x0100" type="Menu">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupItemNode"/>
+        <Strings>
+          <ButtonText>Ordner öffnen</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuSolutionNode" priority="0x0100" type="Menu">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupSolutionNode"/>
+        <Strings>
+          <ButtonText>Ordner öffnen</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuProjectNode" priority="0x0100" type="Menu">
+        <Parent guid="guidOpenFolderCommandSet" id="OpenFolderMenuGroupProjectNode"/>
+        <Strings>
+          <ButtonText>Ordner öffnen</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidOpenFolderPackage" value="{9a00504e-156b-4250-81b1-565c17b14a57}" />
+
+    <GuidSymbol name="guidOpenFolderCommandSet" value="{3D94678C-412C-47E9-A4B9-DEF3BE3AAD1E}">
+      <IDSymbol name="OpenFolderMenuGroupItemNode" value="0x1001" />
+      <IDSymbol name="OpenFolderMenuGroupSolutionNode" value="0x1002" />
+      <IDSymbol name="OpenFolderMenuGroupProjectNode" value="0x1003" />
+      <IDSymbol name="OpenFolderSubMenuGroupItemNode" value="0x1004" />
+      <IDSymbol name="OpenFolderSubMenuGroupSolutionNode" value="0x1005" />
+      <IDSymbol name="OpenFolderSubMenuGroupProjectNode" value="0x1006" />
+
+      <IDSymbol name="OpenFolderSubMenuItemNode" value="0x2001" />
+      <IDSymbol name="OpenFolderSubMenuSolutionNode" value="0x2002" />
+      <IDSymbol name="OpenFolderSubMenuProjectNode" value="0x2003" />
+
+      <IDSymbol name="Commands.OpenFolderButtonItemNode" value="0x3001" />
+      <IDSymbol name="Commands.OpenFolderButtonSolutionNode" value="0x3002" />
+      <IDSymbol name="Commands.OpenFolderButtonProjectNode" value="0x3003" />
+      <IDSymbol name="Commands.OpenOutDirectoryButtonProjectNode" value="0x3004" />
+
+      <IDSymbol name="CommandsPowershell.OpenFolderButtonItemNode" value="0x3005" />
+      <IDSymbol name="CommandsPowershell.OpenFolderButtonSolutionNode" value="0x3006" />
+      <IDSymbol name="CommandsPowershell.OpenFolderButtonProjectNode" value="0x3007" />
+      <IDSymbol name="CommandsPowershell.OpenOutDirectoryButtonProjectNode" value="0x3008" />
+
+      <IDSymbol name="CommandsCmd.OpenFolderButtonItemNode" value="0x3009" />
+      <IDSymbol name="CommandsCmd.OpenFolderButtonSolutionNode" value="0x300A" />
+      <IDSymbol name="CommandsCmd.OpenFolderButtonProjectNode" value="0x300B" />
+      <IDSymbol name="CommandsCmd.OpenOutDirectoryButtonProjectNode" value="0x300C" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

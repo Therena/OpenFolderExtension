@@ -42,11 +42,6 @@ limitations under the License.
       </Group>
     </Groups>
     
-    <Bitmaps>
-      <Bitmap guid="guidImages" href="Resources\OpenFolderPowershell.ico" usedList="CommandsPowershell.BmpPicOpenFolder" />
-      <Bitmap guid="guidImages" href="Resources\OpenFolderCmd.ico" usedList="CommandsCmd.BmpPicOpenFolder" />
-    </Bitmaps>
-    
     <Buttons>
       <Button guid="guidOpenFolderCommandSet" id="Commands.OpenFolderButtonItemNode" priority="0x0001" type="Button">
         <Parent guid="guidOpenFolderCommandSet" id="OpenFolderSubMenuGroupItemNode" />
@@ -221,11 +216,6 @@ limitations under the License.
       <IDSymbol name="CommandsCmd.OpenFolderButtonSolutionNode" value="0x300A" />
       <IDSymbol name="CommandsCmd.OpenFolderButtonProjectNode" value="0x300B" />
       <IDSymbol name="CommandsCmd.OpenOutDirectoryButtonProjectNode" value="0x300C" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidImages" value="{9C2DA68D-BA68-4B14-8583-776924A41DB4}" >
-      <IDSymbol name="CommandsPowershell.BmpPicOpenFolder" value="1" />
-      <IDSymbol name="CommandsCmd.BmpPicOpenFolder" value="2" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>
