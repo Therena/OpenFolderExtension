@@ -13,29 +13,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 using System;
 using System.ComponentModel.Design;
+using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using EnvDTE80;
-using EnvDTE;
 
-namespace OpenFolderExtension.CommandsCmd
+namespace OpenFolderExtension.CommandsCommandLine
 {
     internal sealed class OpenContainingFolderSolutionNode
     {
         public const int CommandId = 0x300A;
-        private readonly AsyncPackage package;
+        private readonly AsyncPackage m_Package;
         public static readonly Guid CommandSet = new Guid("3D94678C-412C-47E9-A4B9-DEF3BE3AAD1E");
 
         private OpenContainingFolderSolutionNode(AsyncPackage package)
         {
-            this.package = package ?? throw new ArgumentNullException("package");
+            this.m_Package = package ?? throw new ArgumentNullException("package");
 
             if (ServiceProvider.GetService(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
             {
-                var menuCommandID = new CommandID(CommandSet, CommandId);
-                var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandID);
+                var menuCommandId = new CommandID(CommandSet, CommandId);
+                var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandId);
                 commandService.AddCommand(menuItem);
             }
         }
@@ -46,13 +46,7 @@ namespace OpenFolderExtension.CommandsCmd
             private set;
         }
 
-        private IServiceProvider ServiceProvider
-        {
-            get
-            {
-                return this.package;
-            }
-        }
+        private IServiceProvider ServiceProvider => m_Package;
 
         public static void Initialize(AsyncPackage package)
         {
@@ -63,13 +57,14 @@ namespace OpenFolderExtension.CommandsCmd
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            if ((ServiceProvider.GetService(typeof(SDTE)) as DTE2).SelectedItems.Count <= 0)
+            var selectedItems = (ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.SelectedItems;
+            if (selectedItems == null || selectedItems.Count == 0)
             {
                 return;
             }
 
             var folders = new Folders();
-            var path = folders.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2).Solution);
+            var path = folders.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
 
             if (string.IsNullOrWhiteSpace(path))
             {
