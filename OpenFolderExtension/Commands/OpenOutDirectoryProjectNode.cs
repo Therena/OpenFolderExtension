@@ -27,17 +27,17 @@ namespace OpenFolderExtension.Commands
     internal sealed class OpenOutDirectoryProjectNode
     {
         public const int CommandId = 0x3004;
-        private readonly AsyncPackage package;
+        private readonly AsyncPackage m_Package;
         public static readonly Guid CommandSet = new Guid("3D94678C-412C-47E9-A4B9-DEF3BE3AAD1E");
 
         private OpenOutDirectoryProjectNode(AsyncPackage package)
         {
-            this.package = package ?? throw new ArgumentNullException("package");
+            this.m_Package = package ?? throw new ArgumentNullException(nameof(package));
 
             if (ServiceProvider.GetService(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
             {
-                var menuCommandID = new CommandID(CommandSet, CommandId);
-                var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandID);
+                var menuCommandId = new CommandID(CommandSet, CommandId);
+                var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandId);
                 commandService.AddCommand(menuItem);
             }
         }
@@ -48,13 +48,7 @@ namespace OpenFolderExtension.Commands
             private set;
         }
 
-        private IServiceProvider ServiceProvider
-        {
-            get
-            {
-                return this.package;
-            }
-        }
+        private IServiceProvider ServiceProvider => m_Package;
 
         public static void Initialize(AsyncPackage package)
         {
@@ -65,13 +59,14 @@ namespace OpenFolderExtension.Commands
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            if ((ServiceProvider.GetService(typeof(SDTE)) as DTE2).SelectedItems.Count <= 0)
+            var selectedItems = (ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.SelectedItems;
+            if (selectedItems == null || selectedItems.Count == 0)
             {
                 return;
             }
 
             var folders = new Folders();
-            foreach (SelectedItem selectedItem in (ServiceProvider.GetService(typeof(SDTE)) as DTE2).SelectedItems)
+            foreach (SelectedItem selectedItem in selectedItems)
             {
                 if (selectedItem.Project != null)
                 {

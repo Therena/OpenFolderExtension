@@ -18,7 +18,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.VisualStudio.Shell;
-using OpenFolderExtension;
+using OpenFolderExtension.CommandsCommandLine;
 
 namespace OpenFolderExtension
 {
@@ -30,11 +30,6 @@ namespace OpenFolderExtension
     public sealed class OpenFolderPackage : AsyncPackage
     {
         public const string PackageGuidString = "9a00504e-156b-4250-81b1-565c17b14a57";
-
-        public OpenFolderPackage()
-        {
-
-        }
 
         protected override System.Threading.Tasks.Task InitializeAsync(
             CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
@@ -49,12 +44,12 @@ namespace OpenFolderExtension
             CommandsPowershell.OpenContainingFolderSolutionNode.Initialize(this);
             CommandsPowershell.OpenOutDirectoryProjectNode.Initialize(this);
 
-            CommandsCmd.OpenContainingFolderItemNode.Initialize(this);
-            CommandsCmd.OpenContainingFolderProjectNode.Initialize(this);
-            CommandsCmd.OpenContainingFolderSolutionNode.Initialize(this);
-            CommandsCmd.OpenOutDirectoryProjectNode.Initialize(this);
+            OpenContainingFolderItemNode.Initialize(this);
+            OpenContainingFolderProjectNode.Initialize(this);
+            OpenContainingFolderSolutionNode.Initialize(this);
+            OpenOutDirectoryProjectNode.Initialize(this);
 
-            base.Initialize();
+            Initialize();
 
             return System.Threading.Tasks.Task.CompletedTask;
         }
