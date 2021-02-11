@@ -82,6 +82,11 @@ namespace OpenFolderExtension.CommandsPowershell
                         Directory.CreateDirectory(path);
                     }
 
+                    if(path.EndsWith("\\"))
+                    {
+                        path = path.Remove(path.Length - 1);
+                    }
+
                     System.Diagnostics.Process.Start("powershell.exe",
                         "-NoExit -Command \"Set-Location -Path " + path + "\"");
                 }
