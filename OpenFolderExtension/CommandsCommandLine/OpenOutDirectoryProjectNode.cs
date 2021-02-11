@@ -82,7 +82,7 @@ namespace OpenFolderExtension.CommandsCommandLine
                         Directory.CreateDirectory(path);
                     }
 
-                    System.Diagnostics.Process.Start("cmd.exe", " /K \"cd " + path + "\"");
+                    System.Diagnostics.Process.Start("cmd.exe", " /K \"cd /D " + path + "\"");
                 }
             }
         }
