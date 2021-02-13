@@ -63,31 +63,10 @@ namespace OpenFolderExtension.CommandsPowershell
                 return;
             }
 
-            var folders = new Folders();
             foreach (SelectedItem selectedItem in selectedItems)
             {
-                var path = "";
-                if (selectedItem.Project != null)
-                {
-                    path = folders.GetProjectPath(selectedItem.Project);
-                }
-
-                if (selectedItem.ProjectItem != null)
-                {
-                    path = folders.GetProjectItemPath(selectedItem.ProjectItem);
-                }
-
-                if (string.IsNullOrWhiteSpace(path))
-                {
-                    return;
-                }
-
-                if (path.EndsWith("\\"))
-                {
-                    path = path.Remove(path.Length - 1);
-                }
-
-                System.Diagnostics.Process.Start("powershell.exe", "-NoExit -Command \"Set-Location -Path " + path + "\"");
+                var path = ProjectSettings.GetSelectedItemPath(selectedItem);
+                Powershell.Show(path);
             }
         }
     }
