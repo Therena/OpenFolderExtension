@@ -71,7 +71,7 @@ namespace OpenFolderExtension.Commands
                     continue;
                 }
 
-                var path = ProjectSettings.GetTargetFile(selectedItem.Project);
+                var path = ProjectSettings.GetOutputFileName(selectedItem.Project);
                 Explorer.Show(path);
             }
         }

@@ -72,7 +72,7 @@ namespace OpenFolderExtension.CommandsPowershell
                     continue;
                 }
 
-                var path = ProjectSettings.GetTargetFile(selectedItem.Project);
+                var path = ProjectSettings.GetOutputFileName(selectedItem.Project);
                 Powershell.Show(path);
             }
         }

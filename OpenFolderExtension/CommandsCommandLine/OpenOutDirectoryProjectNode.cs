@@ -73,7 +73,7 @@ namespace OpenFolderExtension.CommandsCommandLine
                     continue;
                 }
 
-                var path = ProjectSettings.GetTargetFile(selectedItem.Project);
+                var path = ProjectSettings.GetOutputFileName(selectedItem.Project);
                 CommandLine.Show(path);
             }
         }
