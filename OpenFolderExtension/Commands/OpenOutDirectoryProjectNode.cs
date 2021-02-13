@@ -23,7 +23,6 @@ using System.IO;
 
 namespace OpenFolderExtension.Commands
 {
-
     internal sealed class OpenOutDirectoryProjectNode
     {
         public const int CommandId = 0x3004;
@@ -65,24 +64,15 @@ namespace OpenFolderExtension.Commands
                 return;
             }
 
-            var folders = new Folders();
             foreach (SelectedItem selectedItem in selectedItems)
             {
-                if (selectedItem.Project != null)
+                if (selectedItem.Project == null)
                 {
-                    var path = folders.GetOutputPath(selectedItem.Project);
-                    if (string.IsNullOrWhiteSpace(path))
-                    {
-                        return;
-                    }
-
-                    if(Directory.Exists(path) == false)
-                    {
-                        Directory.CreateDirectory(path);
-                    }
-
-                    System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
+                    continue;
                 }
+
+                var path = ProjectSettings.GetTargetFile(selectedItem.Project);
+                Explorer.Show(path);
             }
         }
     }

@@ -66,24 +66,15 @@ namespace OpenFolderExtension.CommandsCommandLine
                 return;
             }
 
-            var folders = new Folders();
             foreach (SelectedItem selectedItem in selectedItems)
             {
-                if (selectedItem.Project != null)
+                if (selectedItem.Project == null)
                 {
-                    var path = folders.GetOutputPath(selectedItem.Project);
-                    if (string.IsNullOrWhiteSpace(path))
-                    {
-                        return;
-                    }
-
-                    if(Directory.Exists(path) == false)
-                    {
-                        Directory.CreateDirectory(path);
-                    }
-
-                    System.Diagnostics.Process.Start("cmd.exe", " /K \"cd /D " + path + "\"");
+                    continue;
                 }
+
+                var path = ProjectSettings.GetTargetFile(selectedItem.Project);
+                CommandLine.Show(path);
             }
         }
     }

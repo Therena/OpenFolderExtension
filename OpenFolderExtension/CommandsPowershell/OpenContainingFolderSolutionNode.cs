@@ -62,20 +62,8 @@ namespace OpenFolderExtension.CommandsPowershell
                 return;
             }
 
-            var folders = new Folders();
-            var path = folders.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
-
-            if (string.IsNullOrWhiteSpace(path))
-            {
-                return;
-            }
-
-            if (path.EndsWith("\\"))
-            {
-                path = path.Remove(path.Length - 1);
-            }
-
-            System.Diagnostics.Process.Start("powershell.exe", "-NoExit -Command \"Set-Location -Path " + path + "\"");
+            var path = ProjectSettings.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
+            Powershell.Show(path);
         }
     }
 }

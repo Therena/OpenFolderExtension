@@ -19,6 +19,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using EnvDTE80;
 using EnvDTE;
+using System.IO;
 
 namespace OpenFolderExtension.Commands
 {
@@ -63,26 +64,10 @@ namespace OpenFolderExtension.Commands
                 return;
             }
 
-            var folders = new Folders();
             foreach (SelectedItem selectedItem in selectedItems)
             {
-                var path = "";
-                if (selectedItem.Project != null)
-                {
-                    path = folders.GetProjectPath(selectedItem.Project);
-                }
-
-                if (selectedItem.ProjectItem != null)
-                {
-                    path = folders.GetProjectItemPath(selectedItem.ProjectItem);
-                }
-
-                if (string.IsNullOrWhiteSpace(path))
-                {
-                    return;
-                }
-
-                System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
+                var path = ProjectSettings.GetSelectedItemPath(selectedItem);
+                Explorer.Show(path);
             }
         }
     }

@@ -62,14 +62,8 @@ namespace OpenFolderExtension.Commands
                 return;
             }
 
-            var folders = new Folders();
-            var path = folders.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
-
-            if (string.IsNullOrWhiteSpace(path))
-            {
-                return;
-            }
-            System.Diagnostics.Process.Start("explorer.exe", "\"" + path + "\"");
+            var path = ProjectSettings.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
+            Explorer.Show(path);
         }
     }
 }
