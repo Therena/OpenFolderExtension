@@ -21,14 +21,27 @@ namespace OpenFolderExtension.CommandsPowershell
 {
     internal static class Powershell
     {
-        public static void Show(FileInfo path)
+        public static void Show(FileInfo path, DirectoryInfo fallback)
         {
             if (path == null)
             {
                 throw new NullReferenceException("Empty path cannot be displayed in powershell");
             }
 
-            Process.Start("powershell.exe", "-NoExit -Command \"Set-Location -Path '" + path.GetFirstExistingDirectory().FullName + "'\"");
+            var filePath = path.GetFirstExistingDirectory();
+            if (filePath.Exists)
+            {
+                Process.Start("powershell.exe", "-NoExit -Command \"Set-Location -Path '" + filePath.FullName + "'\"");
+                return;
+            }
+
+            if(fallback != null)
+            {
+                Process.Start("powershell.exe", "-NoExit -Command \"Set-Location -Path '" + fallback.FullName + "'\"");
+                return;
+            }
+
+            Process.Start("powershell.exe");
         }
     }
 }

@@ -64,10 +64,11 @@ namespace OpenFolderExtension.Commands
                 return;
             }
 
+            var solutionPath = ProjectSettings.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
             foreach (SelectedItem selectedItem in selectedItems)
             {
                 var path = ProjectSettings.GetSelectedItemPath(selectedItem);
-                Explorer.Show(path);
+                Explorer.Show(path, solutionPath.Directory);
             }
         }
     }

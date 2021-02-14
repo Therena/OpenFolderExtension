@@ -21,7 +21,7 @@ namespace OpenFolderExtension.Commands
 {
     internal static class Explorer
     {
-        public static void Show(FileInfo path)
+        public static void Show(FileInfo path, DirectoryInfo fallback)
         {
             if(path == null)
             {
@@ -31,12 +31,23 @@ namespace OpenFolderExtension.Commands
             if (path.Exists)
             {
                 Process.Start("explorer.exe", "/select,\"" + path.FullName + "\"");
+                return;
             }
-            else
+
+            var filePath = path.GetFirstExistingDirectory();
+            if (filePath.Exists)
             {
-                var fullPath = path.GetFirstExistingDirectory().FullName;
-                Process.Start("explorer.exe", "\"" + fullPath + "\"");
+                Process.Start("explorer.exe", "\"" + filePath.FullName + "\"");
+                return;
             }
+
+            if (fallback != null)
+            {
+                Process.Start("explorer.exe", "\"" + fallback.FullName + "\"");
+                return;
+            }
+
+            Process.Start("explorer.exe");
         }
     }
 }

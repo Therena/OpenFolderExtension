@@ -64,7 +64,7 @@ namespace OpenFolderExtension.CommandsCommandLine
             }
 
             var path = ProjectSettings.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
-            CommandLine.Show(path);
+            CommandLine.Show(path, null);
         }
     }
 }

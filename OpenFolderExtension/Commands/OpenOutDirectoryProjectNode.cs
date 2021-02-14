@@ -64,6 +64,7 @@ namespace OpenFolderExtension.Commands
                 return;
             }
 
+            var solutionPath = ProjectSettings.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
             foreach (SelectedItem selectedItem in selectedItems)
             {
                 if (selectedItem.Project == null)
@@ -72,7 +73,7 @@ namespace OpenFolderExtension.Commands
                 }
 
                 var path = ProjectSettings.GetOutputFileName(selectedItem.Project);
-                Explorer.Show(path);
+                Explorer.Show(path, solutionPath.Directory);
             }
         }
     }
