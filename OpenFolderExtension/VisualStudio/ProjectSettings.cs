@@ -18,6 +18,7 @@ using Microsoft.VisualStudio.Shell;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -48,6 +49,7 @@ namespace OpenFolderExtension
                     propertyList.Add(item.Name, item.Value);
                 }
                 catch (COMException) { }
+                catch (NotImplementedException) { }
                 catch (TargetParameterCountException) { }
             }
 
@@ -64,7 +66,7 @@ namespace OpenFolderExtension
                 throw new FileNotFoundException("Unable to find the path for the selected item");
             }
 
-            return new FileInfo(slnFile.Directory.FullName);
+            return new FileInfo(slnFile.FullName);
         }
 
         public static FileInfo GetSelectedItemPath(SelectedItem selectedItem)
@@ -102,6 +104,62 @@ namespace OpenFolderExtension
             return proj.Properties.Item("ActiveConfiguration").Value as Properties;
         }
 
+        private static bool IsDirectory(string path)
+        {
+            try
+            {
+                var attr = File.GetAttributes(path);
+                return attr.HasFlag(FileAttributes.Directory);
+            }
+            catch (IOException)
+            {
+                bool found = new[]
+                    {
+                        Path.DirectorySeparatorChar,
+                        Path.AltDirectorySeparatorChar
+                    }.Any(x => path.EndsWith(x.ToString()));
+
+                return found;
+            }
+        }
+
+        private static bool IsRooted(string filePath)
+        {
+            try
+            {
+                return Path.IsPathRooted(filePath);
+            }
+            catch (IOException) { }
+
+            return true;
+        }
+
+        private static FileInfo ConstructOutputFileName(Project proj, string filePath)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            if(IsRooted(filePath) == false)
+            {
+                var projectPath = GetProjectPath(proj);
+                filePath = Path.Combine(projectPath.Directory.FullName, filePath ?? string.Empty);
+            }
+
+            if (IsDirectory(filePath))
+            {
+                var propertyList = GetAllProperty(proj.Properties);
+                if (propertyList.ContainsKey("OutputFileName"))
+                {
+                    filePath = Path.Combine(filePath ?? string.Empty, propertyList["OutputFileName"].ToString());
+                }
+                else
+                {
+                    throw new FileNotFoundException("Unable to find the project output path");
+                }
+            }
+
+            return new FileInfo(filePath);
+        }
+
         public static FileInfo GetOutputFileName(Project proj)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
@@ -119,25 +177,17 @@ namespace OpenFolderExtension
             {
                 propertyName = "CodeAnalysisInputAssembly";
             }
+            else if (propertyList.ContainsKey("OutputPath"))
+            {
+                propertyName = "OutputPath";
+            }
             else
             {
                 throw new FileNotFoundException("Unable to find the project output path");
             }
 
             var filePath = propertyList[propertyName].ToString();
-            try
-            {
-                if (Path.IsPathRooted(filePath))
-                {
-                    return new FileInfo(filePath);
-                }
-
-                var projectPath = GetProjectPath(proj);
-                return new FileInfo(Path.Combine(projectPath.Directory.FullName, filePath ?? string.Empty));
-            }
-            catch (IOException) { }
-
-            return new FileInfo(filePath);
+            return ConstructOutputFileName(proj, filePath);
         }
 
         public static FileInfo GetProjectItemPath(ProjectItem item)
@@ -153,25 +203,50 @@ namespace OpenFolderExtension
             return new FileInfo(propertyList["FullPath"].ToString());
         }
 
+        private static FileInfo ConstructProjectPath(Dictionary<string, object> projectProperties, string filePath)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            if (IsDirectory(filePath))
+            {
+                if (projectProperties.ContainsKey("FileName"))
+                {
+                    filePath = Path.Combine(filePath ?? string.Empty, projectProperties["FileName"].ToString());
+                }
+                else
+                {
+                    throw new FileNotFoundException("Unable to find the project path");
+                }
+            }
+
+            return new FileInfo(filePath);
+        }
+
         public static FileInfo GetProjectPath(Project proj)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
             var propertyList = GetAllProperty(proj.Properties);
 
-            // C# Project has the FullPath property
-            if (propertyList.ContainsKey("FullPath"))
+            string propertyName;
+            if (propertyList.ContainsKey("FullProjectFileName"))
             {
-                return new FileInfo(propertyList["FullPath"].ToString());
+                propertyName = "FullProjectFileName";
+            }
+            else if (propertyList.ContainsKey("FullPath"))
+            {
+                propertyName = "FullPath";
+            }
+            else if (propertyList.ContainsKey("ProjectFile"))
+            {
+                propertyName = "ProjectFile";
+            }
+            else
+            {
+                throw new FileNotFoundException("Unable to find the project path");
             }
 
-            // C++ Project has the ProjectFile property
-            if (propertyList.ContainsKey("ProjectFile"))
-            {
-                return new FileInfo(propertyList["ProjectFile"].ToString());
-            }
-
-            throw new FileNotFoundException("Unable to find the project path");
+            return ConstructProjectPath(propertyList, propertyList[propertyName].ToString());
         }
     }
 }

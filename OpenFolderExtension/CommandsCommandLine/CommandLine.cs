@@ -21,14 +21,27 @@ namespace OpenFolderExtension.CommandsCommandLine
 {
     internal static class CommandLine
     {
-        public static void Show(FileInfo path)
+        public static void Show(FileInfo path, DirectoryInfo fallback)
         {
             if (path == null)
             {
                 throw new NullReferenceException("Empty path cannot be displayed in command line");
             }
 
-            Process.Start("cmd.exe", " /K \"cd /D " + path.GetFirstExistingDirectory().FullName + "\"");
+            var filePath = path.GetFirstExistingDirectory();
+            if (filePath.Exists)
+            {
+                Process.Start("cmd.exe", " /K \"cd /D " + filePath.FullName + "\"");
+                return;
+            }
+
+            if (fallback != null)
+            {
+                Process.Start("cmd.exe", " /K \"cd /D " + fallback.FullName + "\"");
+                return;
+            }
+
+            Process.Start("cmd.exe");
         }
     }
 }

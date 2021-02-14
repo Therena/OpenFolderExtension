@@ -63,10 +63,11 @@ namespace OpenFolderExtension.CommandsPowershell
                 return;
             }
 
+            var solutionPath = ProjectSettings.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
             foreach (SelectedItem selectedItem in selectedItems)
             {
                 var path = ProjectSettings.GetSelectedItemPath(selectedItem);
-                Powershell.Show(path);
+                Powershell.Show(path, solutionPath.Directory);
             }
         }
     }

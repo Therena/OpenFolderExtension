@@ -22,7 +22,7 @@ namespace OpenFolderExtension
         public static DirectoryInfo GetFirstExistingDirectory(this FileInfo path)
         {
             var dirPath = path.Directory.FullName;
-            while (Directory.Exists(dirPath) == false)
+            while (Directory.Exists(dirPath) == false && Directory.GetParent(dirPath) != null)
             {
                 dirPath = Directory.GetParent(dirPath).FullName;
             }
