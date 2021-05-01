@@ -58,14 +58,12 @@ jobs:
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
+    
+    - name: Nuget Restore
+      run: cmd.exe /C nuget restore D:\a\OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln -DisableParallelProcessing
 
-    # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
-    #    and modify them (or add more) to build your code if your project
-    #    uses a compiled language
-
-    - run: |
-       cmd.exe /C nuget restore D:\a\OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln -DisableParallelProcessing
-       cmd.exe /C CALL "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" && msbuild D:\a\OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln /p:UseSharedCompilation=false /t:rebuild /p:Platform="Any CPU" /p:VisualStudioVersion="16.0" /p:Configuration="Debug" /p:MvcBuildViews=true
+    - name: Build the Open Folder Extension
+      run: cmd.exe /C CALL "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" && msbuild D:\a\OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln /p:UseSharedCompilation=false /t:rebuild /p:Platform="Any CPU" /p:VisualStudioVersion="16.0" /p:Configuration="Debug" /p:MvcBuildViews=true
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
