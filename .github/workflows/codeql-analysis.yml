@@ -64,11 +64,14 @@ jobs:
       with:
         vs-version: '[16.0,17.0)'
       
+    - name: Setup NuGet.exe for use with actions
+      uses: NuGet/setup-nuget@v1.0.5
+      
     - name: Nuget Restore
-      run: nuget restore ${{ github.workspace }}\OpenFolderExtension.sln -DisableParallelProcessing
+      run: nuget restore ${{ github.workspace }}\OpenFolderExtension.sln
 
     - name: Build the Open Folder Extension
-      run: msbuild ${{ github.workspace }}\OpenFolderExtension.sln /p:UseSharedCompilation=false /t:rebuild /p:Platform="Any CPU" /p:VisualStudioVersion="16.0" /p:Configuration="Debug" /p:MvcBuildViews=true
+      run: msbuild ${{ github.workspace }}\OpenFolderExtension.sln /t:rebuild /p:Platform="Any CPU" /p:Configuration="Debug"
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
