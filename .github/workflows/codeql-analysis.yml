@@ -59,8 +59,10 @@ jobs:
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
     
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@2008f912f56e61277eefaac6d1888b750582aa16
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1
+      with:
+        vs-version: '[16.0,17.0)'
       
     - name: Nuget Restore
       run: nuget restore OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln -DisableParallelProcessing
