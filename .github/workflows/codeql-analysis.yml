@@ -68,7 +68,7 @@ jobs:
         
     - name: Build the Open Folder Extension
       run:
-        cmd.exe /C CALL "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && set Platform=&& type NUL && msbuild ${{ github.workspace }}\OpenFolderExtension.sln /t:rebuild /p:Platform="Any CPU" /p:Configuration="Debug"
+        cmd.exe /C CALL "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && msbuild ${{ github.workspace }}\OpenFolderExtension.sln /t:rebuild /p:Platform="Any CPU" /p:Configuration="Debug"
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
