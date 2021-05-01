@@ -63,7 +63,7 @@ jobs:
       run: cmd.exe /C nuget restore D:\a\OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln -DisableParallelProcessing
 
     - name: Build the Open Folder Extension
-      run: cmd.exe /C CALL "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" && msbuild D:\a\OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln /p:UseSharedCompilation=false /t:rebuild /p:Platform="Any CPU" /p:VisualStudioVersion="16.0" /p:Configuration="Debug" /p:MvcBuildViews=true
+      run: cmd.exe /C CALL ^"C:\Program Files ^(x86^)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat^" && msbuild D:\a\OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln /p:UseSharedCompilation=false /t:rebuild /p:Platform="Any CPU" /p:VisualStudioVersion="16.0" /p:Configuration="Debug" /p:MvcBuildViews=true
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
