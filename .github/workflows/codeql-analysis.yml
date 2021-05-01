@@ -64,13 +64,13 @@ jobs:
       with:
         vs-version: '[16.0,17.0)'
       
-    - name: Setup NuGet.exe for use with actions
+    - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
-
+        
     - name: Build the Open Folder Extension
-      run:
+      run: |
         nuget restore ${{ github.workspace }}\OpenFolderExtension.sln
-        msbuild ${{ github.workspace }}\OpenFolderExtension.sln /t:rebuild /p:Platform="Any CPU" /p:Configuration="Debug"
+        cmd.exe /C CALL "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" && msbuild ${{ github.workspace }}\OpenFolderExtension.sln /t:rebuild /p:Platform="Any CPU" /p:Configuration="Debug"
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
