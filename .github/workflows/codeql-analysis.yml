@@ -59,11 +59,14 @@ jobs:
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
     
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@2008f912f56e61277eefaac6d1888b750582aa16
+      
     - name: Nuget Restore
-      run: cmd.exe /C nuget restore D:\a\OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln -DisableParallelProcessing
+      run: nuget restore OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln -DisableParallelProcessing
 
     - name: Build the Open Folder Extension
-      run: cmd.exe /C CALL ^"C:\Program Files ^(x86^)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat^" && msbuild D:\a\OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln /p:UseSharedCompilation=false /t:rebuild /p:Platform="Any CPU" /p:VisualStudioVersion="16.0" /p:Configuration="Debug" /p:MvcBuildViews=true
+      run: msbuild OpenFolderExtension\OpenFolderExtension\OpenFolderExtension.sln /p:UseSharedCompilation=false /t:rebuild /p:Platform="Any CPU" /p:VisualStudioVersion="16.0" /p:Configuration="Debug" /p:MvcBuildViews=true
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
