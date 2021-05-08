@@ -1,5 +1,5 @@
 ﻿//
-// Copyright 2020 David Roller 
+// Copyright 2021 David Roller 
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,11 +21,28 @@ namespace OpenFolderExtension.Commands
 {
     internal static class Explorer
     {
-        public static void Show(FileInfo path, DirectoryInfo fallback)
+        private static void ShowFallback(DirectoryInfo fallback)
         {
-            if(path == null)
+            if (fallback == null)
             {
                 throw new NullReferenceException("Empty path cannot be displayed in explorer");
+            }
+
+            if (fallback.Exists)
+            {
+                Process.Start("explorer.exe", "\"" + fallback.FullName + "\"");
+                return;
+            }
+
+            Process.Start("explorer.exe");
+        }
+
+        public static void Show(FileInfo path, DirectoryInfo fallback)
+        {
+            if (path == null)
+            {
+                ShowFallback(fallback);
+                return;
             }
 
             if (path.Exists)
@@ -41,13 +58,7 @@ namespace OpenFolderExtension.Commands
                 return;
             }
 
-            if (fallback != null)
-            {
-                Process.Start("explorer.exe", "\"" + fallback.FullName + "\"");
-                return;
-            }
-
-            Process.Start("explorer.exe");
+            ShowFallback(fallback);
         }
     }
 }

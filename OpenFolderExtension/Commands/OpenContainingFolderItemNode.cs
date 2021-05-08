@@ -1,5 +1,5 @@
 ﻿//
-// Copyright 2020 David Roller 
+// Copyright 2021 David Roller 
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -64,12 +64,24 @@ namespace OpenFolderExtension.Commands
                 return;
             }
 
-            var solutionPath = ProjectSettings.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
-            foreach (SelectedItem selectedItem in selectedItems)
+            FileInfo path = null;
+            DirectoryInfo solutionPath = new DirectoryInfo(Path.GetPathRoot(Environment.SystemDirectory));
+            try
             {
-                var path = ProjectSettings.GetSelectedItemPath(selectedItem);
-                Explorer.Show(path, solutionPath.Directory);
+                var solutionFile = ProjectSettings.GetSolutionPath((ServiceProvider.GetService(typeof(SDTE)) as DTE2)?.Solution);
+                solutionPath = solutionFile.Directory;
+
+                foreach (SelectedItem selectedItem in selectedItems)
+                {
+                    path = ProjectSettings.GetSelectedItemPath(selectedItem);
+                }
             }
+            catch (FileNotFoundException)
+            {
+                path = ProjectSettings.LookingForSelectedItem(this.ServiceProvider);
+            }
+
+            Explorer.Show(path, solutionPath);
         }
     }
 }
