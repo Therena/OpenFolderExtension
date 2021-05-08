@@ -1,5 +1,5 @@
 ﻿//
-// Copyright 2020 David Roller 
+// Copyright 2021 David Roller 
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,13 +14,16 @@
 // limitations under the License.
 //
 using EnvDTE;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Windows.Controls;
 
 namespace OpenFolderExtension
 {
@@ -247,6 +250,66 @@ namespace OpenFolderExtension
             }
 
             return ConstructProjectPath(propertyList, propertyList[propertyName].ToString());
+        }
+
+        public static FileInfo LookingForSelectedItem(IServiceProvider serviceProvider)
+        {
+            IVsUIHierarchyWindow hierarchyWindow = VsShellUtilities.GetUIHierarchyWindow(serviceProvider,
+                VSConstants.StandardToolWindows.SolutionExplorer);
+
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            var pane = hierarchyWindow as WindowPane;
+            if (pane == null)
+            {
+                throw new FileNotFoundException("Unable to find the items full path");
+            }
+
+            var paneContent = pane.Content as Panel;
+            if (paneContent == null || paneContent.Children.Count == 0)
+            {
+                throw new FileNotFoundException("Unable to find the items full path");
+            }
+
+            foreach (ContentPresenter contentPresenter in paneContent.Children)
+            {
+                try
+                {
+                    if (contentPresenter == null)
+                    {
+                        continue;
+                    }
+
+                    var listBox = contentPresenter.Content.GetType().GetProperties().Single(p => p.Name == "TreeView" &&
+                                            p.PropertyType.FullName == "Microsoft.VisualStudio.PlatformUI.SolutionPivotTreeView")
+                        .GetValue(contentPresenter.Content) as ListBox;
+
+                    if (listBox.SelectedItem == null)
+                    {
+                        continue;
+                    }
+
+                    var selectedItemNode = listBox.SelectedItem as Microsoft.Internal.VisualStudio.PlatformUI.IVirtualizingTreeNode;
+                    if (selectedItemNode == null)
+                    {
+                        continue;
+                    }
+
+                    var sourceItem = selectedItemNode.Item.GetType().GetProperties().Single(p => p.Name == "SourceItem")
+                        .GetValue(selectedItemNode.Item);
+
+                    var canonicalName = sourceItem.GetType().GetProperties().Single(p => p.Name == "CanonicalName")
+                        .GetValue(sourceItem) as string;
+
+                    return new FileInfo(canonicalName);
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+
+            throw new FileNotFoundException("Unable to find the items full path");
         }
     }
 }
