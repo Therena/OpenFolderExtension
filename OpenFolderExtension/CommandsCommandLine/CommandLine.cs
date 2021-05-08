@@ -1,5 +1,5 @@
 ﻿//
-// Copyright 2020 David Roller 
+// Copyright 2021 David Roller 
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,11 +21,28 @@ namespace OpenFolderExtension.CommandsCommandLine
 {
     internal static class CommandLine
     {
+        private static void ShowFallback(DirectoryInfo fallback)
+        {
+            if (fallback == null)
+            {
+                throw new NullReferenceException("Empty path cannot be displayed in explorer");
+            }
+
+            if (fallback.Exists)
+            {
+                Process.Start("cmd.exe", " /K \"cd /D " + fallback.FullName + "\"");
+                return;
+            }
+
+            Process.Start("cmd.exe");
+        }
+
         public static void Show(FileInfo path, DirectoryInfo fallback)
         {
             if (path == null)
             {
-                throw new NullReferenceException("Empty path cannot be displayed in command line");
+                ShowFallback(fallback);
+                return;
             }
 
             var filePath = path.GetFirstExistingDirectory();
@@ -35,13 +52,7 @@ namespace OpenFolderExtension.CommandsCommandLine
                 return;
             }
 
-            if (fallback != null)
-            {
-                Process.Start("cmd.exe", " /K \"cd /D " + fallback.FullName + "\"");
-                return;
-            }
-
-            Process.Start("cmd.exe");
+            ShowFallback(fallback);
         }
     }
 }
