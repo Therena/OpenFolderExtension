@@ -7,6 +7,7 @@ Open folder feature for all items within the solution explorer.
 Download this extension from the Visual Studio Marketplace
 - Visual Studio 2015 - Visual Studio 2017: [Open Folder Extension 2017](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension)
 - Visual Studio 2019: [Open Folder Extension 2019](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2019)
+- Visual Studio 2022: [Open Folder Extension 2022](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2022)
 
 ## Supported languages
 
