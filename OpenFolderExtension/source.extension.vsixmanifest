@@ -16,7 +16,7 @@ limitations under the License.
 -->
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="E0C1743A-4D80-4F0E-B638-4A251B6CF26A" Version="1.2026.0.3" Language="en-US" Publisher="David Roller" />
+        <Identity Id="E0C1743A-4D80-4F0E-B638-4A251B6CF26A" Version="1.2026.0.5" Language="en-US" Publisher="David Roller" />
         <DisplayName>Open Folder Extension 2026</DisplayName>
         <Description xml:space="preserve">Open folder feature for all items within the solution explorer.</Description>
         <License>Resources\LICENSE</License>
