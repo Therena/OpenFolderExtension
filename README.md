@@ -1,49 +1,64 @@
-# OpenFolderExtension
+﻿# OpenFolderExtension
 
-Open folder feature for all items within the solution explorer.
+# ✨ Open Folder Extension: Access File Locations Directly from Solution Explorer
 
-![CodeQL](https://github.com/Therena/OpenFolderExtension/actions/workflows/codeql-analysis.yml/badge.svg)
+**Instantly open the containing folder or output directory for any item within the Visual Studio Solution Explorer.**
 
-Download this extension from the Visual Studio Marketplace
-- Visual Studio 2015 - Visual Studio 2017: [Open Folder Extension 2017](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension)
-- Visual Studio 2019: [Open Folder Extension 2019](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2019)
-- Visual Studio 2022: [Open Folder Extension 2022](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2022)
+**Tired of navigating through layers of directories just to find a file's location?** The **Open Folder Extension** integrates seamless file and folder access right into your Visual Studio workflow, significantly boosting your productivity.
 
-## Supported languages
+## ⬇️ Download from the Visual Studio Marketplace
 
-- en-US American English
-- de-DE Standard German
+Select the version compatible with your environment:
 
-## Features
+* **Visual Studio 2026:** [Open Folder Extension 2026](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2026)
+* **Visual Studio 2022:** [Open Folder Extension 2022](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2022)
+* **Visual Studio 2019:** [Open Folder Extension 2019](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2019)
+* **Visual Studio 2017:** [Open Folder Extension 2017](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension)
+* **Visual Studio 2015:** [Open Folder Extension 2017](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension)
 
-- Open the containing folder of a file in the solution explorer
-- Open output folder of a project from solution explorer
+## 🚀 Key Features
 
-The folder can be opened in the fllowing application:
-- File Explorer
-- Powershell
-- Command line
+* **Open Containing Folder:** Quickly open the directory holding a selected **file** or **project**.
+* **Open Output Folder:** Immediately navigate to the **output directory** of a selected project (e.g., `bin\Debug`).
 
-### Open the containing folder of a file in the Solution Explorer
+### Supported Applications for Opening Folders
 
-Select a file or a project in the Solution Explorer and right-click it.
+The target folder can be opened directly in the following applications:
+* File Explorer
+* PowerShell
+* Command Prompt (CMD)
+
+---
+
+## 💻 Usage Instructions
+
+### 1. Opening a File's Containing Folder
+
+Right-click any file or project within the **Solution Explorer**.
 
 ![Context menu](https://github.com/Therena/OpenFolderExtension/blob/master/Images/contextmenu.png?raw=true)
 
-And then select the "Open folder" to open the explorer.
+Select **"Open folder"** to launch the directory in your chosen application (e.g., File Explorer).
 
 ![Explorer opened](https://github.com/Therena/OpenFolderExtension/blob/master/Images/opened.png?raw=true)
 
-### Open output folder of a project from solution explorer
+### 2. Opening a Project's Output Folder
 
-Select a project in the Solution Explorer and right-click it.
+Right-click a project within the **Solution Explorer**.
 
 ![Context menu output](https://github.com/Therena/OpenFolderExtension/blob/master/Images/contextmenu_output.png?raw=true)
 
-And then select the "Open output path" to open the explorer.
+Select **"Open output path"** to instantly access the compiled output directory.
 
 ![Explorer opened output](https://github.com/Therena/OpenFolderExtension/blob/master/Images/opened_output.png?raw=true)
 
-## License
+---
 
-[Apache 2.0](https://github.com/Therena/OpenFolderExtension/blob/master/LICENSE)
+## 🌐 Supported Languages
+
+* en-US (American English)
+* de-DE (Standard German)
+
+## 📜 License
+
+This extension is released under the [Apache 2.0 License](https://github.com/Therena/OpenFolderExtension/blob/master/LICENSE).
