@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2016 David Roller
+Copyright 2025 David Roller
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@ limitations under the License.
 -->
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="E0C1743A-4D80-4F0E-B638-4A251B6CF26A" Version="1.2026.0.6" Language="en-US" Publisher="David Roller" />
+        <Identity Id="E0C1743A-4D80-4F0E-B638-4A251B6CF26A" Version="1.2026.0.10" Language="en-US" Publisher="David Roller" />
         <DisplayName>Open Folder Extension 2026</DisplayName>
         <Description xml:space="preserve">Open folder feature for all items within the solution explorer.</Description>
         <License>Resources\LICENSE</License>
@@ -24,14 +24,23 @@ limitations under the License.
         <PreviewImage>Resources\Preview.png</PreviewImage>
         <Tags>files, open, folder</Tags>
     </Metadata>
-    <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14,19.0)">
+    <Installation InstalledByMsi="true">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,19.0)">
+            <ProductArchitecture>arm64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,19.0)">
+            <ProductArchitecture>arm64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,19.0)">
+            <ProductArchitecture>arm64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,19.0)">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
-        <InstallationTarget Version="[17.14,19.0)" Id="Microsoft.VisualStudio.Enterprise">
+        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,19.0)" >
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
-        <InstallationTarget Version="[17.14,19.0)" Id="Microsoft.VisualStudio.Pro">
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,19.0)">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
     </Installation>
@@ -39,8 +48,8 @@ limitations under the License.
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.8,)" />
     </Dependencies>
     <Prerequisites>
-        <Prerequisite DisplayName="Visual Studio-Kern-Editor" Version="[17.14,19.0)" Id="Microsoft.VisualStudio.Component.CoreEditor" />
-        <Prerequisite Id="Microsoft.VisualStudio.Component.DiagnosticTools" Version="[17.14,19.0)" DisplayName="Profilerstellungstools" />
+        <Prerequisite DisplayName="Visual Studio-Kern-Editor" Version="[17.0,19.0)" Id="Microsoft.VisualStudio.Component.CoreEditor" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.DiagnosticTools" Version="[17.0,19.0)" DisplayName="Profilerstellungstools" />
     </Prerequisites>
     <Assets>
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
