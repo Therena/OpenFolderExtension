@@ -1,6 +1,6 @@
 ﻿# OpenFolderExtension
 
-# ✨ Open Folder Extension: Access File Locations Directly from Solution Explorer
+## ✨ Access File Locations Directly from Solution Explorer
 
 **Instantly open the containing folder or output directory for any item within the Visual Studio Solution Explorer.**
 
