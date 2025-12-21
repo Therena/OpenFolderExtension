@@ -14,7 +14,7 @@ Select the version compatible with your environment:
 * **Visual Studio 2022:** [Open Folder Extension 2022](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2022)
 * **Visual Studio 2019:** [Open Folder Extension 2019](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension2019)
 * **Visual Studio 2017:** [Open Folder Extension 2017](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension)
-* **Visual Studio 2015:** [Open Folder Extension 2017](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension)
+* **Visual Studio 2015:** [Open Folder Extension 2015](https://marketplace.visualstudio.com/items?itemName=DavidRoller.OpenFolderExtension)
 
 ## 🚀 Key Features
 
